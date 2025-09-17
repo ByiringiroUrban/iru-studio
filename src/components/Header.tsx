@@ -10,6 +10,8 @@ import {
   Facebook,
   Twitter,
   Linkedin,
+  Pin,
+  MessageCircle,
   ShoppingCart,
 } from "lucide-react";
 import CompactHeader from "./CompactHeader";
@@ -42,29 +44,38 @@ const Header = () => {
               </div>
             </div>
             <div className="flex items-center space-x-4">
-              <div className="w-6 h-6 bg-primary rounded flex items-center justify-center hover:bg-primary/80 cursor-pointer">
+              <a href="https://facebook.com" target="_blank" rel="noreferrer" className="w-6 h-6 bg-primary rounded flex items-center justify-center hover:bg-primary/80 cursor-pointer">
                 <Facebook className="w-3 h-3 text-white" />
-              </div>
-              <div className="w-6 h-6 bg-primary rounded flex items-center justify-center hover:bg-primary/80 cursor-pointer">
+              </a>
+              <a href="https://twitter.com" target="_blank" rel="noreferrer" className="w-6 h-6 bg-primary rounded flex items-center justify-center hover:bg-primary/80 cursor-pointer">
                 <Twitter className="w-3 h-3 text-white" />
-              </div>
-              <div className="w-6 h-6 bg-primary rounded flex items-center justify-center hover:bg-primary/80 cursor-pointer">
+              </a>
+              <a href="https://linkedin.com" target="_blank" rel="noreferrer" className="w-6 h-6 bg-primary rounded flex items-center justify-center hover:bg-primary/80 cursor-pointer">
                 <Linkedin className="w-3 h-3 text-white" />
-              </div>
+              </a>
+              <a href="https://pinterest.com" target="_blank" rel="noreferrer" className="w-6 h-6 bg-primary rounded flex items-center justify-center hover:bg-primary/80 cursor-pointer">
+                <Pin className="w-3 h-3 text-white" />
+              </a>
+              <a href="https://wa.me/250795381733" target="_blank" rel="noreferrer" className="w-6 h-6 bg-primary rounded flex items-center justify-center hover:bg-primary/80 cursor-pointer">
+                <MessageCircle className="w-3 h-3 text-white" />
+              </a>
+              <Button asChild className="ml-3 bg-primary hover:bg-primary/90 text-primary-foreground px-3 py-1 text-xs">
+                <Link to="/book-now">BOOK NOW</Link>
+              </Button>
             </div>
           </div>
         </div>
 
         {/* Main Navigation */}
         <div className="container mx-auto px-4">
-          <div className="flex justify-between items-center py-3">
+          <div className="flex items-center py-3">
             {/* Logo */}
             <Link to="/" className="flex items-center space-x-3">
               <img src={frameTuneLogo} alt="Frame & Tune Studio logo" className="h-10 w-auto" />
             </Link>
 
             {/* Desktop Navigation */}
-            <div className="hidden lg:flex items-center space-x-6">
+            <div className="hidden lg:flex flex-1 justify-center items-center space-x-6">
               <Link to="/" className="text-studio-navy hover:text-primary transition-colors text-sm">Home</Link>
               {/* About Dropdown */}
               <div className="relative group">
@@ -94,15 +105,12 @@ const Header = () => {
               </div>
               <Link to="/pricing" className="text-studio-navy hover:text-primary transition-colors text-sm">Pricing</Link>
               <Link to="/contact" className="text-studio-navy hover:text-primary transition-colors text-sm">Contact</Link>
-              {/* Book Now and Cart */}
-              <div className="flex items-center">
-                <Button asChild className="bg-primary hover:bg-primary/90 text-primary-foreground px-4 py-1 text-sm">
-                  <Link to="/book-now">BOOK NOW</Link>
-                </Button>
-                <button className="ml-2 text-studio-navy hover:text-primary transition-colors" aria-label="Add to cart">
-                  <ShoppingCart className="w-6 h-6" />
-                </button>
-              </div>
+            </div>
+            {/* Right actions */}
+            <div className="hidden lg:flex items-center ml-auto pl-6">
+              <button className="text-studio-navy hover:text-primary transition-colors" aria-label="Add to cart">
+                <ShoppingCart className="w-6 h-6" />
+              </button>
             </div>
             {/* Mobile Cart Button */}
             <button className="lg:hidden p-2 text-studio-navy" aria-label="Add to cart">
@@ -150,7 +158,6 @@ const Header = () => {
                 </div>
                 <Link to="/pricing" className="block text-studio-navy hover:text-primary text-sm">Pricing</Link>
                 <Link to="/contact" className="block text-studio-navy hover:text-primary text-sm">Contact</Link>
-                <Button asChild className="w-full bg-primary hover:bg-primary/90 text-primary-foreground text-sm"><Link to="/book-now">BOOK NOW</Link></Button>
               </div>
             </div>
           )}

@@ -2,7 +2,7 @@ import { Request, Response } from 'express';
 import nodemailer from 'nodemailer';
 import Booking, { IBooking, IBookingItem } from '../models/Booking';
 
-const transporter = nodemailer.createTransporter({
+const transporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
     user: 'urbanpac20@gmail.com',

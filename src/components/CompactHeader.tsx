@@ -122,10 +122,7 @@ const CompactHeader: React.FC<CompactHeaderProps> = ({ isVisible }) => {
              </Link>
           </div>
 
-          {/* Book Now Button */}
-          <Button asChild className="hidden lg:block bg-primary hover:bg-primary/90 text-primary-foreground px-4 py-1 text-sm">
-            <Link to="/book-now">BOOK NOW</Link>
-          </Button>
+          {/* No Book Now here; moved to main header top bar */}
 
           {/* Mobile Menu Button */}
           <button
