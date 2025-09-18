@@ -2,6 +2,9 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { ChevronRight, Home, CheckCircle } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { fadeInUp, staggerContainer, floatIn } from '@/lib/animations';
+import videographyService from '@/assets/videography-service.jpg';
 
 const WhyChooseUs = () => {
   return (
@@ -19,23 +22,33 @@ const WhyChooseUs = () => {
       </div>
 
       <div className="container mx-auto px-4 py-16">
-        <div className="max-w-4xl mx-auto">
-          <h1 className="text-4xl lg:text-5xl font-extrabold text-studio-navy mb-8">
+        <div className="max-w-5xl mx-auto">
+          <motion.h1
+            className="text-4xl lg:text-5xl font-extrabold text-studio-navy mb-8"
+            variants={fadeInUp}
+            initial="hidden"
+            animate="visible"
+          >
             Why choose FRAME AND TUNES STUDIO
-          </h1>
+          </motion.h1>
 
           {/* Intro */}
-          <div className="mb-16 bg-gradient-to-br from-blue-50 to-purple-50 p-8 rounded-2xl">
-            <p className="text-lg text-gray-700 leading-relaxed">
-              Frame and Tune Studio brings together a diverse team of creatives to deliver custom multimedia solutions. 
-              We emphasize quality, creativity, and client collaboration to ensure every project is uniquely tailored 
-              and professionally executed.
-            </p>
-          </div>
+          <motion.div className="mb-16 grid md:grid-cols-2 gap-8 items-center" variants={staggerContainer(0.1)} initial="hidden" animate="visible">
+            <motion.div variants={fadeInUp} className="bg-gradient-to-br from-blue-50 to-purple-50 p-8 rounded-2xl">
+              <p className="text-lg text-gray-700 leading-relaxed">
+                Frame and Tune Studio brings together a diverse team of creatives to deliver custom multimedia solutions. 
+                We emphasize quality, creativity, and client collaboration to ensure every project is uniquely tailored 
+                and professionally executed.
+              </p>
+            </motion.div>
+            <motion.div variants={floatIn} className="rounded-2xl overflow-hidden shadow-card">
+              <img src={videographyService} alt="Why choose us" className="w-full h-64 object-cover" />
+            </motion.div>
+          </motion.div>
 
           {/* Highlights */}
-          <div className="space-y-8">
-            <div className="flex items-start space-x-4 bg-white p-6 rounded-2xl shadow-card">
+          <motion.div variants={staggerContainer(0.12, 0.1)} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} className="grid md:grid-cols-2 gap-6">
+            <motion.div variants={fadeInUp} className="flex items-start space-x-4 bg-white p-6 rounded-2xl shadow-card">
               <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center flex-shrink-0">
                 <CheckCircle className="w-6 h-6 text-white" />
               </div>
@@ -46,9 +59,9 @@ const WhyChooseUs = () => {
                   to meet your specific requirements and deliver results that exceed expectations.
                 </p>
               </div>
-            </div>
+            </motion.div>
 
-            <div className="flex items-start space-x-4 bg-white p-6 rounded-2xl shadow-card">
+            <motion.div variants={fadeInUp} className="flex items-start space-x-4 bg-white p-6 rounded-2xl shadow-card">
               <div className="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center flex-shrink-0">
                 <CheckCircle className="w-6 h-6 text-white" />
               </div>
@@ -59,9 +72,9 @@ const WhyChooseUs = () => {
                   Each team member brings years of experience and specialized expertise to your project.
                 </p>
               </div>
-            </div>
+            </motion.div>
 
-            <div className="flex items-start space-x-4 bg-white p-6 rounded-2xl shadow-card">
+            <motion.div variants={fadeInUp} className="flex items-start space-x-4 bg-white p-6 rounded-2xl shadow-card">
               <div className="w-12 h-12 bg-purple-500 rounded-full flex items-center justify-center flex-shrink-0">
                 <CheckCircle className="w-6 h-6 text-white" />
               </div>
@@ -72,9 +85,9 @@ const WhyChooseUs = () => {
                   that every deliverable meets professional standards and serves your creative vision.
                 </p>
               </div>
-            </div>
+            </motion.div>
 
-            <div className="flex items-start space-x-4 bg-white p-6 rounded-2xl shadow-card">
+            <motion.div variants={fadeInUp} className="flex items-start space-x-4 bg-white p-6 rounded-2xl shadow-card">
               <div className="w-12 h-12 bg-orange-500 rounded-full flex items-center justify-center flex-shrink-0">
                 <CheckCircle className="w-6 h-6 text-white" />
               </div>
@@ -85,9 +98,9 @@ const WhyChooseUs = () => {
                   we believe in transparent, fair pricing that provides excellent value for professional services.
                 </p>
               </div>
-            </div>
+            </motion.div>
 
-            <div className="flex items-start space-x-4 bg-white p-6 rounded-2xl shadow-card">
+            <motion.div variants={fadeInUp} className="flex items-start space-x-4 bg-white p-6 rounded-2xl shadow-card">
               <div className="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center flex-shrink-0">
                 <CheckCircle className="w-6 h-6 text-white" />
               </div>
@@ -98,9 +111,9 @@ const WhyChooseUs = () => {
                   a dedicated team guiding your project from initial planning through final delivery.
                 </p>
               </div>
-            </div>
+            </motion.div>
 
-            <div className="flex items-start space-x-4 bg-white p-6 rounded-2xl shadow-card">
+            <motion.div variants={fadeInUp} className="flex items-start space-x-4 bg-white p-6 rounded-2xl shadow-card">
               <div className="w-12 h-12 bg-indigo-500 rounded-full flex items-center justify-center flex-shrink-0">
                 <CheckCircle className="w-6 h-6 text-white" />
               </div>
@@ -111,17 +124,17 @@ const WhyChooseUs = () => {
                   consistent quality and client satisfaction across diverse industries and project types.
                 </p>
               </div>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
 
           {/* Call to Action */}
-          <div className="mt-16 text-center">
+          <motion.div className="mt-16 text-center" variants={fadeInUp} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.3 }}>
             <Link to="/contact">
               <Button className="bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-3 text-lg">
                 Get Started Today
               </Button>
             </Link>
-          </div>
+          </motion.div>
         </div>
       </div>
     </div>

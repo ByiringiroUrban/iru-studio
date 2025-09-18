@@ -9,7 +9,9 @@ import {
   Camera,
   Video,
   Edit3,
-  Headphones
+  Headphones,
+  Image as ImageIcon,
+  Package
 } from 'lucide-react';
 import { pricingData, type ServiceCategory } from '../data/pricing';
 import PricingModal from '../components/PricingModal';
@@ -102,6 +104,7 @@ const Pricing = () => {
       case 'videography': return Video;
       case 'editing': return Edit3;
       case 'audio': return Headphones;
+      case 'frames': return ImageIcon;
       default: return Star;
     }
   };
@@ -191,7 +194,7 @@ const Pricing = () => {
       <section className="py-20 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-studio-navy mb-4">Individual Services</h2>
+            <h2 className="text-4xl font-bold text-studio-navy mb-4">Individual Services & Frames</h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
               Detailed pricing for our core services. Click "View Details" to see complete 
               tier breakdowns and features.

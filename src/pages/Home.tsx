@@ -10,6 +10,8 @@ import photographyService from '@/assets/photography-service.jpg';
 import editingService from '@/assets/editing-service.jpg';
 import videographyService from '@/assets/videography-service.jpg';
 import audioService from '@/assets/audio-service.jpg';
+import { motion } from 'framer-motion';
+import { fadeInUp, staggerContainer, scaleHover } from '@/lib/animations';
 
 const Home = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -227,95 +229,101 @@ const Home = () => {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <div className="text-center">
-              <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
+          <motion.div
+            variants={staggerContainer(0.12, 0.1)}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
+            className="grid md:grid-cols-2 lg:grid-cols-4 gap-8"
+          >
+            <motion.div variants={fadeInUp} className="text-center bg-white p-6 rounded-2xl shadow-card" whileHover="hover" initial="rest" animate="rest">
+              <motion.div variants={scaleHover} className="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
                 <Palette className="w-8 h-8 text-white" aria-hidden="true" />
-              </div>
+              </motion.div>
               <h3 className="text-xl font-bold text-studio-navy mb-3">Comprehensive Creative Services</h3>
               <p className="text-gray-600 text-sm">
                 We offer a full spectrum of creative services including photography, videography, 
                 audio production, and art creation, all under one roof.
               </p>
-            </div>
+            </motion.div>
 
-            <div className="text-center">
-              <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
+            <motion.div variants={fadeInUp} className="text-center bg-white p-6 rounded-2xl shadow-card" whileHover="hover" initial="rest" animate="rest">
+              <motion.div variants={scaleHover} className="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
                 <Users className="w-8 h-8 text-white" aria-hidden="true" />
-              </div>
+              </motion.div>
               <h3 className="text-xl font-bold text-studio-navy mb-3">Expert Team of Professionals</h3>
               <p className="text-gray-600 text-sm">
                 Our team consists of highly skilled and passionate professionals who are experienced 
                 about their craft. Whether you need a photographer, videographer, music producer.
               </p>
-            </div>
+            </motion.div>
 
-            <div className="text-center">
-              <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
+            <motion.div variants={fadeInUp} className="text-center bg-white p-6 rounded-2xl shadow-card" whileHover="hover" initial="rest" animate="rest">
+              <motion.div variants={scaleHover} className="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
                 <Target className="w-8 h-8 text-white" aria-hidden="true" />
-              </div>
+              </motion.div>
               <h3 className="text-xl font-bold text-studio-navy mb-3">Tailored Solutions for Every Client</h3>
               <p className="text-gray-600 text-sm">
                 We believe that every project is unique. That's why we take the time to 
                 listen to your specific needs and goals.
               </p>
-            </div>
+            </motion.div>
 
-            <div className="text-center">
-              <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
+            <motion.div variants={fadeInUp} className="text-center bg-white p-6 rounded-2xl shadow-card" whileHover="hover" initial="rest" animate="rest">
+              <motion.div variants={scaleHover} className="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
                 <Cog className="w-8 h-8 text-white" aria-hidden="true" />
-              </div>
+              </motion.div>
               <h3 className="text-xl font-bold text-studio-navy mb-3">State-of-the-Art Equipment</h3>
               <p className="text-gray-600 text-sm">
                 At Frame and Tune Studio, we use only the latest and most advanced 
                 equipment in the industry. From high-end cameras and professional audio gear.
               </p>
-            </div>
+            </motion.div>
 
-            <div className="text-center">
-              <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
+            <motion.div variants={fadeInUp} className="text-center bg-white p-6 rounded-2xl shadow-card" whileHover="hover" initial="rest" animate="rest">
+              <motion.div variants={scaleHover} className="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
                 <Gem className="w-8 h-8 text-white" aria-hidden="true" />
-              </div>
+              </motion.div>
               <h3 className="text-xl font-bold text-studio-navy mb-3">Passion for Quality and Creativity</h3>
               <p className="text-gray-600 text-sm">
                 We believe that creativity and quality go hand in hand. Our clients trust us to deliver 
                 not just technically excellent results, but also creative and unique results.
               </p>
-            </div>
+            </motion.div>
 
-            <div className="text-center">
-              <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
+            <motion.div variants={fadeInUp} className="text-center bg-white p-6 rounded-2xl shadow-card" whileHover="hover" initial="rest" animate="rest">
+              <motion.div variants={scaleHover} className="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
                 <Handshake className="w-8 h-8 text-white" aria-hidden="true" />
-              </div>
+              </motion.div>
               <h3 className="text-xl font-bold text-studio-navy mb-3">Collaborative Approach</h3>
               <p className="text-gray-600 text-sm">
                 We believe in true collaborative approach. Throughout the creative journey, we keep you 
                 involved and informed, ensuring that your vision is reflected at every step.
               </p>
-            </div>
+            </motion.div>
 
-            <div className="text-center">
-              <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
+            <motion.div variants={fadeInUp} className="text-center bg-white p-6 rounded-2xl shadow-card" whileHover="hover" initial="rest" animate="rest">
+              <motion.div variants={scaleHover} className="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
                 <DollarSign className="w-8 h-8 text-white" aria-hidden="true" />
-              </div>
+              </motion.div>
               <h3 className="text-xl font-bold text-studio-navy mb-3">Affordable & Flexible</h3>
               <p className="text-gray-600 text-sm">
                 High-quality creative services shouldn't break the bank. We offer flexible pricing options 
                 that make our expertise accessible to companies of all sizes.
               </p>
-            </div>
+            </motion.div>
 
-            <div className="text-center">
-              <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
+            <motion.div variants={fadeInUp} className="text-center bg-white p-6 rounded-2xl shadow-card" whileHover="hover" initial="rest" animate="rest">
+              <motion.div variants={scaleHover} className="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
                 <Trophy className="w-8 h-8 text-white" aria-hidden="true" />
-              </div>
+              </motion.div>
               <h3 className="text-xl font-bold text-studio-navy mb-3">Proven Track Record</h3>
               <p className="text-gray-600 text-sm">
                 With years of experience and a diverse portfolio of successful projects, we have 
                 built a reputation for excellence in the creative industry.
               </p>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
         </div>
       </section>
 

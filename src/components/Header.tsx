@@ -103,19 +103,48 @@ const Header = () => {
                   <Link to="/internships" className="block px-3 py-2 text-xs text-studio-navy hover:bg-gray-50">Internships</Link>
                 </div>
               </div>
-              <Link to="/pricing" className="text-studio-navy hover:text-primary transition-colors text-sm">Pricing</Link>
+              <Link to="/gallery" className="text-studio-navy hover:text-primary transition-colors text-sm">Gallery</Link>
+              {/* Pricing Dropdown */}
+              <div className="relative group">
+                <button className="flex items-center space-x-1 text-studio-navy hover:text-primary transition-colors text-sm">
+                  <span>Pricing</span>
+                  <ChevronDown className="w-3 h-3" />
+                </button>
+                <div className="absolute top-full left-0 mt-1 w-44 bg-white shadow-xl rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 border border-gray-100" role="menu" aria-label="Pricing submenu">
+                  <Link to="/pricing" className="block px-3 py-2 text-xs text-studio-navy hover:bg-gray-50">Packages & Services</Link>
+                  <Link to="/pricing/frames" className="block px-3 py-2 text-xs text-studio-navy hover:bg-gray-50">Frames</Link>
+                </div>
+              </div>
               <Link to="/contact" className="text-studio-navy hover:text-primary transition-colors text-sm">Contact</Link>
             </div>
             {/* Right actions */}
-            <div className="hidden lg:flex items-center ml-auto pl-6">
+            <div className="hidden lg:flex items-center ml-auto pl-6 space-x-4">
+              <form action="/search" method="GET" className="hidden md:block">
+                <input
+                  type="text"
+                  name="q"
+                  placeholder="Search..."
+                  className="border border-gray-200 rounded-full px-3 py-1 text-sm focus:outline-none focus:ring-2 focus:ring-primary/30"
+                />
+              </form>
               <button className="text-studio-navy hover:text-primary transition-colors" aria-label="Add to cart">
                 <ShoppingCart className="w-6 h-6" />
               </button>
             </div>
-            {/* Mobile Cart Button */}
-            <button className="lg:hidden p-2 text-studio-navy" aria-label="Add to cart">
-              <ShoppingCart className="w-6 h-6" />
-            </button>
+            {/* Mobile Search + Cart */}
+            <div className="lg:hidden flex items-center space-x-2">
+              <form action="/search" method="GET">
+                <input
+                  type="text"
+                  name="q"
+                  placeholder="Search..."
+                  className="border border-gray-200 rounded-full px-3 py-1 text-sm focus:outline-none focus:ring-2 focus:ring-primary/30"
+                />
+              </form>
+              <button className="p-2 text-studio-navy" aria-label="Add to cart">
+                <ShoppingCart className="w-6 h-6" />
+              </button>
+            </div>
             {/* Mobile Menu Button */}
             <button className="lg:hidden p-2 text-studio-navy" onClick={() => setIsMenuOpen(!isMenuOpen)} aria-label="Toggle menu">
               {isMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
@@ -156,7 +185,20 @@ const Header = () => {
                     </div>
                   )}
                 </div>
-                <Link to="/pricing" className="block text-studio-navy hover:text-primary text-sm">Pricing</Link>
+                <Link to="/gallery" className="block text-studio-navy hover:text-primary text-sm">Gallery</Link>
+                {/* Mobile Pricing Submenu */}
+                <div>
+                  <button onClick={() => toggleSubmenu("pricing")} className="flex items-center justify-between w-full text-studio-navy hover:text-primary text-sm">
+                    <span>Pricing</span>
+                    <ChevronDown className={`w-3 h-3 transform transition-transform ${openSubmenu === "pricing" ? "rotate-180" : ""}`} />
+                  </button>
+                  {openSubmenu === "pricing" && (
+                    <div className="mt-2 ml-4 space-y-2">
+                      <Link to="/pricing" className="block text-xs text-studio-navy hover:text-primary">Packages & Services</Link>
+                      <Link to="/pricing/frames" className="block text-xs text-studio-navy hover:text-primary">Frames</Link>
+                    </div>
+                  )}
+                </div>
                 <Link to="/contact" className="block text-studio-navy hover:text-primary text-sm">Contact</Link>
               </div>
             </div>

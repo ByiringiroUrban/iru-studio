@@ -19,6 +19,81 @@ export interface ServiceData {
 
 export const pricingData: ServiceData[] = [
   {
+    service: 'frames',
+    categories: [
+      {
+        id: 'photobook-a3',
+        title: 'Photobook A3',
+        description: 'Premium printed photobooks (A3 sizes)',
+        tiers: [
+          { tier: 'basic', label: 'Page 30', price: 'RWF 150,000', features: ['Gloss pages', 'Cover design', 'Digital copy'] },
+          { tier: 'standard', label: 'Page 40', price: 'RWF 200,000', features: ['Matte/gloss combo', 'Custom cover', 'Slipcase'] },
+          { tier: 'premium', label: 'Page 60', price: 'RWF 250,000', features: ['Luxury paper', 'Hard slipcase', 'Engraved title'] }
+        ]
+      },
+      {
+        id: 'photobook-a4',
+        title: 'Photobook A4',
+        description: 'Elegant compact photobooks (A4 sizes)',
+        tiers: [
+          { tier: 'basic', label: 'Page 30', price: 'RWF 70,000', features: ['Gloss pages', 'Cover design', 'Digital copy'] },
+          { tier: 'standard', label: 'Page 40', price: 'RWF 90,000', features: ['Matte/gloss combo', 'Custom cover', 'Slipcase'] },
+          { tier: 'premium', label: 'Page 60', price: 'RWF 115,000', features: ['Luxury paper', 'Hard slipcase', 'Engraved title'] }
+        ]
+      },
+      {
+        id: 'wood-frame-board',
+        title: 'Wood Frame Board',
+        description: 'Classic wooden frames (various print sizes)',
+        tiers: [
+          { tier: 'basic', label: 'A5–A4', price: 'RWF 15,000–60,000', features: ['Mounted print', 'Glass cover', 'Wall hook'] },
+          { tier: 'standard', label: 'A3–A2', price: 'RWF 90,000–150,000', features: ['Premium wood', 'Anti-glare glass', 'Mat board'] },
+          { tier: 'premium', label: 'A1–A0', price: 'RWF 180,000–260,000', features: ['Museum-grade frame', 'UV glass', 'Installed hardware'] }
+        ]
+      },
+      {
+        id: 'grass-frame',
+        title: 'Grass Frame',
+        description: 'Modern frames with textured/grass finish',
+        tiers: [
+          { tier: 'basic', label: 'A5–A4', price: 'RWF 8,000–25,000', features: ['Textured finish', 'Standard glass'] },
+          { tier: 'standard', label: 'A3–A2', price: 'RWF 35,000–80,000', features: ['Reinforced backing', 'Anti-glare glass'] },
+          { tier: 'premium', label: 'A1–A0', price: 'RWF 120,000–200,000', features: ['Premium build', 'UV protection'] }
+        ]
+      },
+      {
+        id: 'specialised-packages',
+        title: 'Specialised Packages',
+        description: 'Curated combinations for events and business',
+        tiers: [
+          { tier: 'basic', label: 'Wedding Bliss (Basic)', price: 'RWF 7,500,000', features: ['Wedding photography', 'Videography highlights', 'Dance choreography'] },
+          { tier: 'standard', label: 'Creative Entrepreneur (Standard)', price: 'RWF 10,000,000', features: ['Web design', 'Branding package', 'Product photography'] },
+          { tier: 'premium', label: 'Creative Entrepreneur (Premium)', price: 'RWF 20,000,000', features: ['Premium web design', 'Full branding suite', 'Studio shoots'] }
+        ]
+      },
+      {
+        id: 'design-printing',
+        title: 'Design & Printing',
+        description: 'Banners, logos, flyers, and business cards',
+        tiers: [
+          { tier: 'basic', label: 'Basic', price: 'RWF 50,000', features: ['Simple designs', 'Fast delivery', 'Digital proofs'] },
+          { tier: 'standard', label: 'Standard', price: 'RWF 150,000', features: ['Creative concepts', 'Revisions included', 'Print-ready files'] },
+          { tier: 'premium', label: 'Premium', price: 'RWF 400,000', features: ['High-end design', '3D mockups', 'Full brand guide'] }
+        ]
+      },
+      {
+        id: 'website-design',
+        title: 'Website Design',
+        description: 'Personal, portfolio, business, and e‑commerce',
+        tiers: [
+          { tier: 'basic', label: 'Basic', price: 'RWF 900,000', features: ['Up to 5 pages', 'SEO basics', 'Domain & hosting setup'] },
+          { tier: 'standard', label: 'Standard', price: 'RWF 2,500,000', features: ['Up to 10 pages', 'Blog + analytics', 'Admin training'] },
+          { tier: 'premium', label: 'Premium', price: 'RWF 6,000,000', features: ['Unlimited pages', 'E‑commerce ready', 'Maintenance plan'] }
+        ]
+      }
+    ]
+  },
+  {
     service: 'photography',
     categories: [
       {
