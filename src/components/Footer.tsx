@@ -18,7 +18,10 @@ const Footer = () => {
                 alt="Frame & Tune Studio logo" 
                 className="h-12 w-auto"
               />
-              
+              <div>
+                <h2 className="text-xl font-bold text-white">Frame & Tune Studio</h2>
+                <p className="text-xs text-gray-300">Creative Excellence</p>
+              </div>
             </Link>
             <p className="text-sm leading-relaxed">
               We specialize in professional photography, cinematic videography, expert audio production, and immersive art experiences.
@@ -104,7 +107,7 @@ const Footer = () => {
             <div className="space-y-4">
               <div className="flex space-x-3">
                 <div className="w-12 h-12 bg-gray-600 rounded flex-shrink-0">
-                  <img src="/api/placeholder/48/48" alt="Blog post" className="w-full h-full object-cover rounded" />
+                  <img src="/src/assets/projects-graphic-design.jpg" alt="Blog post" className="w-full h-full object-cover rounded" />
                 </div>
                 <div>
                   <div className="flex items-center space-x-2 text-xs text-gray-400 mb-1">
@@ -119,7 +122,7 @@ const Footer = () => {
               
               <div className="flex space-x-3">
                 <div className="w-12 h-12 bg-gray-600 rounded flex-shrink-0">
-                  <img src="/api/placeholder/48/48" alt="Blog post" className="w-full h-full object-cover rounded" />
+                  <img src="/src/assets/projects-graphic-design.jpg" alt="Blog post" className="w-full h-full object-cover rounded" />
                 </div>
                 <div>
                   <div className="flex items-center space-x-2 text-xs text-gray-400 mb-1">

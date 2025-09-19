@@ -23,8 +23,9 @@ import BookNow from "./pages/BookNow";
 import Gallery from "./pages/Gallery";
 import Search from "./pages/Search";
 import { AnimatePresence, motion } from "framer-motion";
-import { fadeIn } from "@/lib/animations";
+import { pageTransition, fadeIn } from "@/lib/animations";
 import Frames from "./pages/Frames";
+import Chatbot from "./components/Chatbot";
 
 const queryClient = new QueryClient();
 
@@ -70,6 +71,7 @@ const App = () => (
             <AppRoutes />
           </main>
           <Footer />
+          <Chatbot />
         </div>
       </BrowserRouter>
     </TooltipProvider>

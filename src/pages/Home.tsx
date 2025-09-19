@@ -11,7 +11,29 @@ import editingService from '@/assets/editing-service.jpg';
 import videographyService from '@/assets/videography-service.jpg';
 import audioService from '@/assets/audio-service.jpg';
 import { motion } from 'framer-motion';
-import { fadeInUp, staggerContainer, scaleHover } from '@/lib/animations';
+import { 
+  fadeInUp, 
+  staggerContainer, 
+  heroText, 
+  heroSubtext, 
+  heroButtons,
+  cardHover,
+  scaleHover,
+  iconBounce,
+  textReveal,
+  imageZoom,
+  buttonHover,
+  scrollReveal,
+  scrollSlideLeft,
+  scrollSlideRight,
+  floating,
+  morphing,
+  staggerFadeIn,
+  slideInFromLeft,
+  slideInFromRight,
+  scaleIn,
+  rotateIn
+} from '@/lib/animations';
 
 const Home = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -55,47 +77,112 @@ const Home = () => {
   return (
     <div>
       {/* Hero Carousel */}
-      <section className="relative h-screen bg-cover bg-center" style={{ backgroundImage: `url(${heroBg})` }}>
+      <section className="relative h-screen bg-cover bg-center overflow-hidden" style={{ backgroundImage: `url(${heroBg})` }}>
         <div className="absolute inset-0 bg-gradient-overlay"></div>
+        
+        {/* Animated background elements */}
+        <motion.div 
+          className="absolute top-20 left-10 w-20 h-20 bg-white/10 rounded-full"
+          animate={{ 
+            y: [0, -20, 0],
+            scale: [1, 1.1, 1],
+            opacity: [0.3, 0.6, 0.3]
+          }}
+          transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+        />
+        <motion.div 
+          className="absolute top-40 right-20 w-16 h-16 bg-primary/20 rounded-full"
+          animate={{ 
+            y: [0, 15, 0],
+            x: [0, 10, 0],
+            scale: [1, 0.8, 1]
+          }}
+          transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+        />
+        <motion.div 
+          className="absolute bottom-32 left-1/4 w-12 h-12 bg-studio-orange/30 rounded-full"
+          animate={{ 
+            y: [0, -25, 0],
+            rotate: [0, 180, 360],
+            scale: [1, 1.2, 1]
+          }}
+          transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+        />
+        
         <div className="relative z-10 h-full flex items-center justify-center">
           <div className="container mx-auto px-4 text-center text-white">
-            <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
+            <motion.h1 
+              key={currentSlide}
+              className="text-4xl md:text-6xl font-bold mb-6 leading-tight"
+              variants={heroText}
+              initial="hidden"
+              animate="visible"
+            >
               {heroSlides[currentSlide].title}
-            </h1>
-            <p className="text-lg md:text-xl mb-8 max-w-4xl mx-auto leading-relaxed">
+            </motion.h1>
+            <motion.p 
+              key={`subtitle-${currentSlide}`}
+              className="text-lg md:text-xl mb-8 max-w-4xl mx-auto leading-relaxed"
+              variants={heroSubtext}
+              initial="hidden"
+              animate="visible"
+            >
               {heroSlides[currentSlide].subtitle}
-            </p>
+            </motion.p>
+            <motion.div
+              key={`button-${currentSlide}`}
+              variants={heroButtons}
+              initial="hidden"
+              animate="visible"
+            >
             <Link to={heroSlides[currentSlide].buttonLink}>
-              <Button className="bg-white/10 text-white border border-white/20 hover:bg-white/20 px-8 py-3 text-lg">
+                <motion.div
+                  whileHover={{ scale: 1.05, y: -2 }}
+                  whileTap={{ scale: 0.95 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <Button className="bg-white/10 text-white border border-white/20 hover:bg-white/20 px-8 py-3 text-lg backdrop-blur-sm">
                 {heroSlides[currentSlide].buttonText}
               </Button>
+                </motion.div>
             </Link>
+            </motion.div>
           </div>
         </div>
         
         {/* Navigation Arrows */}
-        <button 
+        <motion.button 
           onClick={prevSlide}
-          className="absolute left-4 top-1/2 transform -translate-y-1/2 text-white/60 hover:text-white z-20"
+          className="absolute left-4 top-1/2 transform -translate-y-1/2 text-white/60 hover:text-white z-20 bg-black/20 rounded-full p-2 backdrop-blur-sm"
+          whileHover={{ scale: 1.1, x: -5 }}
+          whileTap={{ scale: 0.9 }}
+          transition={{ duration: 0.2 }}
         >
           <ChevronLeft className="w-8 h-8" />
-        </button>
-        <button 
+        </motion.button>
+        <motion.button 
           onClick={nextSlide}
-          className="absolute right-4 top-1/2 transform -translate-y-1/2 text-white/60 hover:text-white z-20"
+          className="absolute right-4 top-1/2 transform -translate-y-1/2 text-white/60 hover:text-white z-20 bg-black/20 rounded-full p-2 backdrop-blur-sm"
+          whileHover={{ scale: 1.1, x: 5 }}
+          whileTap={{ scale: 0.9 }}
+          transition={{ duration: 0.2 }}
         >
           <ChevronRight className="w-8 h-8" />
-        </button>
+        </motion.button>
 
         {/* Slide Indicators */}
         <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-2 z-20">
           {heroSlides.map((_, index) => (
-            <button
+            <motion.button
               key={index}
               onClick={() => setCurrentSlide(index)}
-              className={`w-3 h-3 rounded-full transition-colors ${
-                index === currentSlide ? 'bg-white' : 'bg-white/40'
+              className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                index === currentSlide ? 'bg-white' : 'bg-white/50'
               }`}
+              whileHover={{ scale: 1.2 }}
+              whileTap={{ scale: 0.8 }}
+              animate={index === currentSlide ? { scale: [1, 1.2, 1] } : {}}
+              transition={{ duration: 0.5, repeat: Infinity }}
             />
           ))}
         </div>
@@ -118,133 +205,414 @@ const Home = () => {
       </section>
 
       {/* Experience Banner */}
-      <section className="bg-primary text-primary-foreground py-16">
-        <div className="container mx-auto px-4 text-center">
-          <div className="flex items-center justify-center space-x-4 mb-4">
-            <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center">
-              <span className="text-2xl font-bold">5</span>
-            </div>
+      <motion.section 
+        className="bg-primary text-primary-foreground py-16 relative overflow-hidden"
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+        viewport={{ once: true }}
+      >
+        {/* Animated background elements */}
+        <motion.div 
+          className="absolute top-0 left-0 w-full h-full"
+          animate={{ 
+            background: [
+              "linear-gradient(45deg, rgba(79,117,255,0.1) 0%, rgba(255,165,0,0.1) 100%)",
+              "linear-gradient(45deg, rgba(255,165,0,0.1) 0%, rgba(79,117,255,0.1) 100%)",
+              "linear-gradient(45deg, rgba(79,117,255,0.1) 0%, rgba(255,165,0,0.1) 100%)"
+            ]
+          }}
+          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+        />
+        
+        <div className="container mx-auto px-4 text-center relative z-10">
+          <motion.div 
+            className="flex items-center justify-center space-x-4 mb-4"
+            initial={{ scale: 0.8, opacity: 0 }}
+            whileInView={{ scale: 1, opacity: 1 }}
+            transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
+            viewport={{ once: true }}
+          >
+            <motion.div 
+              className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center"
+              whileHover={{ scale: 1.2, rotate: 360 }}
+              transition={{ duration: 0.5 }}
+            >
+              <motion.span 
+                className="text-2xl font-bold"
+                animate={{ scale: [1, 1.1, 1] }}
+                transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+              >
+                5
+              </motion.span>
+            </motion.div>
             <h2 className="text-4xl md:text-5xl font-bold">Years Working Experience</h2>
+          </motion.div>
+          <motion.p 
+            className="text-xl"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: "easeOut", delay: 0.4 }}
+            viewport={{ once: true }}
+          >
+            Your Creative Studio for Photography, Videography, and Art in Rwanda
+          </motion.p>
           </div>
-          <p className="text-xl">Your Creative Studio for Photography, Videography, and Art in Rwanda</p>
-        </div>
-      </section>
+      </motion.section>
 
       {/* Mission and Vision - Matching the uploaded image design */}
-      <section className="py-20 bg-white">
-        <div className="container mx-auto px-4">
+      <motion.section 
+        className="py-20 bg-white relative overflow-hidden"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 0.8 }}
+        viewport={{ once: true }}
+      >
+        {/* Decorative background elements */}
+        <motion.div 
+          className="absolute top-20 right-10 w-32 h-32 bg-primary/5 rounded-full"
+          animate={{ 
+            scale: [1, 1.2, 1],
+            rotate: [0, 180, 360]
+          }}
+          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+        />
+        <motion.div 
+          className="absolute bottom-20 left-10 w-24 h-24 bg-studio-orange/5 rounded-full"
+          animate={{ 
+            scale: [1, 0.8, 1],
+            y: [0, -20, 0]
+          }}
+          transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+        />
+        
+        <div className="container mx-auto px-4 relative z-10">
           {/* Header Badge */}
-          <div className="text-center mb-8">
-            <div className="inline-block bg-primary text-primary-foreground px-6 py-2 rounded-full text-sm font-medium mb-6">
+          <motion.div 
+            className="text-center mb-8"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            viewport={{ once: true }}
+          >
+            <motion.div 
+              className="inline-block bg-primary text-primary-foreground px-6 py-2 rounded-full text-sm font-medium mb-6"
+              whileHover={{ scale: 1.05, y: -2 }}
+              transition={{ duration: 0.2 }}
+            >
               YOUR CREATIVE STUDIO FOR PHOTOGRAPHY, VIDEOGRAPHY AND ART IN RWANDA
-            </div>
-            <h2 className="text-4xl md:text-5xl font-bold text-studio-navy mb-6">
+            </motion.div>
+            <motion.h2 
+              className="text-4xl md:text-5xl font-bold text-studio-navy mb-6"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
+              viewport={{ once: true }}
+            >
               Crafting Memories, One Frame at a Time
-            </h2>
-            <p className="text-lg text-gray-600 max-w-4xl mx-auto leading-relaxed">
+            </motion.h2>
+            <motion.p 
+              className="text-lg text-gray-600 max-w-4xl mx-auto leading-relaxed"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, ease: "easeOut", delay: 0.4 }}
+              viewport={{ once: true }}
+            >
               At Frame and Tune Studio, we are passionate about capturing and creating beautiful moments. 
               Based in Rwanda, our studio specializes in professional photography, cinematic videography, 
               expert audio production, and immersive art experiences.
-            </p>
-          </div>
+            </motion.p>
+          </motion.div>
 
-          <div className="grid lg:grid-cols-2 gap-12 items-start">
+          <motion.div 
+            className="grid lg:grid-cols-2 gap-12 items-start"
+            variants={staggerContainer(0.2)}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+          >
             {/* Left Side - Image with Experience Badge */}
-            <div className="relative">
-              <div className="rounded-lg overflow-hidden shadow-lg">
-                <img 
+            <motion.div 
+              className="relative"
+              variants={scrollSlideLeft}
+            >
+              <motion.div 
+                className="rounded-lg overflow-hidden shadow-lg"
+                whileHover={{ scale: 1.02, y: -5 }}
+                transition={{ duration: 0.3 }}
+              >
+                <motion.img 
                   src={videographyService} 
                   alt="Professional video equipment" 
                   className="w-full h-80 object-cover"
+                  variants={imageZoom}
+                  whileHover="hover"
                 />
-                <div className="absolute top-6 left-6">
-                  <div className="bg-white/90 backdrop-blur-sm rounded-lg p-4 shadow-lg">
+                <motion.div 
+                  className="absolute top-6 left-6"
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.6, delay: 0.3 }}
+                  viewport={{ once: true }}
+                >
+                  <motion.div 
+                    className="bg-white/90 backdrop-blur-sm rounded-lg p-4 shadow-lg"
+                    whileHover={{ scale: 1.05, y: -2 }}
+                    transition={{ duration: 0.2 }}
+                  >
                     <div className="flex items-center space-x-3">
-                      <div className="w-10 h-10 bg-primary rounded-full flex items-center justify-center">
-                        <span className="text-white font-bold text-lg">5</span>
-                      </div>
+                      <motion.div 
+                        className="w-10 h-10 bg-primary rounded-full flex items-center justify-center"
+                        whileHover={{ rotate: 360, scale: 1.1 }}
+                        transition={{ duration: 0.5 }}
+                      >
+                        <motion.span 
+                          className="text-white font-bold text-lg"
+                          animate={{ scale: [1, 1.1, 1] }}
+                          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                        >
+                          5
+                        </motion.span>
+                      </motion.div>
                       <div>
                         <div className="text-xl font-bold text-studio-navy">Years</div>
                         <div className="text-sm text-gray-600">Working Experience</div>
                       </div>
                     </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+                  </motion.div>
+                </motion.div>
+              </motion.div>
+            </motion.div>
 
             {/* Right Side - Mission and Vision */}
-            <div className="space-y-8">
+            <motion.div 
+              className="space-y-8"
+              variants={scrollSlideRight}
+            >
               {/* Our Mission */}
-              <div className="flex items-start space-x-4">
-                <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center flex-shrink-0">
-                  <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <motion.div 
+                className="flex items-start space-x-4"
+                variants={staggerFadeIn}
+                whileHover={{ x: 5 }}
+                transition={{ duration: 0.2 }}
+              >
+                <motion.div 
+                  className="w-12 h-12 bg-primary rounded-full flex items-center justify-center flex-shrink-0"
+                  whileHover={{ scale: 1.1, rotate: 360 }}
+                  transition={{ duration: 0.5 }}
+                >
+                  <motion.svg 
+                    className="w-6 h-6 text-white" 
+                    fill="none" 
+                    stroke="currentColor" 
+                    viewBox="0 0 24 24"
+                    animate={{ scale: [1, 1.1, 1] }}
+                    transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                  >
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
-                </div>
+                  </motion.svg>
+                </motion.div>
                 <div>
-                  <h3 className="text-xl font-bold text-studio-navy mb-3">Our Mission</h3>
-                  <p className="text-gray-600 leading-relaxed">
+                  <motion.h3 
+                    className="text-xl font-bold text-studio-navy mb-3"
+                    whileHover={{ color: "#4F75FF" }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    Our Mission
+                  </motion.h3>
+                  <motion.p 
+                    className="text-gray-600 leading-relaxed"
+                    initial={{ opacity: 0, x: 20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.6, delay: 0.2 }}
+                    viewport={{ once: true }}
+                  >
                     Empowering creators in the middle of the Live Learn Studio experience as the Internal regional production Sound Amplifier for your Projects and Services.
-                  </p>
+                  </motion.p>
                 </div>
-              </div>
+              </motion.div>
 
               {/* Our Vision */}
-              <div className="flex items-start space-x-4">
-                <div className="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center flex-shrink-0">
-                  <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <motion.div 
+                className="flex items-start space-x-4"
+                variants={staggerFadeIn}
+                whileHover={{ x: 5 }}
+                transition={{ duration: 0.2 }}
+              >
+                <motion.div 
+                  className="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center flex-shrink-0"
+                  whileHover={{ scale: 1.1, rotate: 360 }}
+                  transition={{ duration: 0.5 }}
+                >
+                  <motion.svg 
+                    className="w-6 h-6 text-white" 
+                    fill="none" 
+                    stroke="currentColor" 
+                    viewBox="0 0 24 24"
+                    animate={{ scale: [1, 1.1, 1] }}
+                    transition={{ duration: 2, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+                  >
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
-                  </svg>
-                </div>
+                  </motion.svg>
+                </motion.div>
                 <div>
-                  <h3 className="text-xl font-bold text-studio-navy mb-3">Our Vision</h3>
-                  <p className="text-gray-600 leading-relaxed">
+                  <motion.h3 
+                    className="text-xl font-bold text-studio-navy mb-3"
+                    whileHover={{ color: "#10B981" }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    Our Vision
+                  </motion.h3>
+                  <motion.p 
+                    className="text-gray-600 leading-relaxed"
+                    initial={{ opacity: 0, x: 20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.6, delay: 0.4 }}
+                    viewport={{ once: true }}
+                  >
                     To be Rwanda's premier creative studio, known for elevating the art of visual storytelling. From. We aim to set the standard for quality and innovation in the industry, becoming a trusted partner for clients seeking exceptional multimedia and artistic experiences.
-                  </p>
+                  </motion.p>
                 </div>
-              </div>
+              </motion.div>
 
               {/* Read More Button */}
-              <div className="pt-4">
+              <motion.div 
+                className="pt-4"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.6 }}
+                viewport={{ once: true }}
+              >
+                <motion.div
+                  whileHover={{ scale: 1.05, y: -2 }}
+                  whileTap={{ scale: 0.95 }}
+                  transition={{ duration: 0.2 }}
+                >
                 <Button className="bg-primary hover:bg-primary/90 text-primary-foreground px-6 py-3">
                   READ MORE →
                 </Button>
+                </motion.div>
+              </motion.div>
+            </motion.div>
+          </motion.div>
               </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      </motion.section>
 
       {/* Why Choose Us */}
-      <section className="py-20 bg-gray-50">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-studio-navy mb-4">Why choose us</h2>
-            <p className="text-lg text-gray-600 max-w-4xl mx-auto">
+      <motion.section 
+        className="py-20 bg-gray-50 relative overflow-hidden"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 0.8 }}
+        viewport={{ once: true }}
+      >
+        {/* Animated background elements */}
+        <motion.div 
+          className="absolute top-10 left-10 w-20 h-20 bg-primary/10 rounded-full"
+          animate={{ 
+            y: [0, -20, 0],
+            scale: [1, 1.1, 1],
+            rotate: [0, 180, 360]
+          }}
+          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+        />
+        <motion.div 
+          className="absolute bottom-10 right-10 w-16 h-16 bg-studio-orange/10 rounded-full"
+          animate={{ 
+            y: [0, 15, 0],
+            x: [0, 10, 0],
+            scale: [1, 0.9, 1]
+          }}
+          transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+        />
+        
+        <div className="container mx-auto px-4 relative z-10">
+          <motion.div 
+            className="text-center mb-16"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            viewport={{ once: true }}
+          >
+            <motion.h2 
+              className="text-4xl font-bold text-studio-navy mb-4"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
+              viewport={{ once: true }}
+            >
+              Why choose us
+            </motion.h2>
+            <motion.p 
+              className="text-lg text-gray-600 max-w-4xl mx-auto"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, ease: "easeOut", delay: 0.4 }}
+              viewport={{ once: true }}
+            >
               At Frame and Tune Studio, we offer more than just creative services—we 
               provide a holistic and personalized experience designed to bring your unique 
               vision to life. Here's what makes us your ideal creative partner:
-            </p>
-          </div>
+            </motion.p>
+          </motion.div>
 
           <motion.div
-            variants={staggerContainer(0.12, 0.1)}
+            variants={staggerContainer(0.15, 0.1)}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.2 }}
             className="grid md:grid-cols-2 lg:grid-cols-4 gap-8"
           >
-            <motion.div variants={fadeInUp} className="text-center bg-white p-6 rounded-2xl shadow-card" whileHover="hover" initial="rest" animate="rest">
-              <motion.div variants={scaleHover} className="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
+            <motion.div 
+              variants={scrollReveal} 
+              className="text-center bg-white p-6 rounded-2xl shadow-card relative overflow-hidden group"
+              whileHover={{ 
+                scale: 1.05, 
+                y: -10,
+                boxShadow: "0 20px 40px rgba(0,0,0,0.15)"
+              }}
+              transition={{ duration: 0.3, ease: "easeOut" }}
+            >
+              {/* Animated background gradient */}
+              <motion.div 
+                className="absolute inset-0 bg-gradient-to-br from-primary/5 to-studio-orange/5 opacity-0 group-hover:opacity-100"
+                transition={{ duration: 0.3 }}
+              />
+              
+              <motion.div 
+                className="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4 relative z-10"
+                whileHover={{ 
+                  scale: 1.1, 
+                  rotate: 360,
+                  boxShadow: "0 8px 25px rgba(79,117,255,0.3)"
+                }}
+                transition={{ duration: 0.5 }}
+              >
+                <motion.div
+                  animate={{ scale: [1, 1.1, 1] }}
+                  transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                >
                 <Palette className="w-8 h-8 text-white" aria-hidden="true" />
+                </motion.div>
               </motion.div>
-              <h3 className="text-xl font-bold text-studio-navy mb-3">Comprehensive Creative Services</h3>
-              <p className="text-gray-600 text-sm">
+              
+              <motion.h3 
+                className="text-xl font-bold text-studio-navy mb-3 relative z-10"
+                whileHover={{ color: "#4F75FF" }}
+                transition={{ duration: 0.2 }}
+              >
+                Comprehensive Creative Services
+              </motion.h3>
+              <motion.p 
+                className="text-gray-600 text-sm relative z-10"
+                initial={{ opacity: 0.8 }}
+                whileHover={{ opacity: 1 }}
+                transition={{ duration: 0.2 }}
+              >
                 We offer a full spectrum of creative services including photography, videography, 
                 audio production, and art creation, all under one roof.
-              </p>
+              </motion.p>
             </motion.div>
 
             <motion.div variants={fadeInUp} className="text-center bg-white p-6 rounded-2xl shadow-card" whileHover="hover" initial="rest" animate="rest">
@@ -324,8 +692,8 @@ const Home = () => {
               </p>
             </motion.div>
           </motion.div>
-        </div>
-      </section>
+            </div>
+      </motion.section>
 
       {/* Our Core Values */}
       <section className="py-20 bg-white">
@@ -410,7 +778,7 @@ const Home = () => {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-8">
             <Card className="group overflow-hidden hover:shadow-xl transition-all duration-300 hover:scale-105 bg-white border-0 shadow-md">
               <div className="h-64 bg-gray-200 relative overflow-hidden">
-                <img src="/api/placeholder/400/300" alt="Arts & Creative Design" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" />
+                <img src="/src/assets/projects-graphic-design.jpg" alt="Arts & Creative Design" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" />
                 <div className="absolute bottom-4 left-4">
                   <ServiceIconTile icon="creative" size={48} />
                 </div>
@@ -579,7 +947,7 @@ const Home = () => {
                 <div className="w-64 h-40 bg-gray-800 rounded-lg p-2 shadow-2xl transform group-hover:scale-110 transition-transform duration-500">
                   <div className="w-full h-full bg-white rounded overflow-hidden">
                     <img 
-                      src="/api/placeholder/300/200" 
+                      src="/src/assets/projects-graphic-design.jpg" 
                       alt="Graphic Design Project" 
                       className="w-full h-full object-cover"
                     />
@@ -611,7 +979,7 @@ const Home = () => {
                 <div className="w-64 h-40 bg-gray-800 rounded-lg p-2 shadow-2xl transform group-hover:scale-110 transition-transform duration-500">
                   <div className="w-full h-full bg-white rounded overflow-hidden">
                     <img 
-                      src="/api/placeholder/300/200" 
+                      src="/src/assets/frame-tune-logo.jpg" 
                       alt="Web Development Project" 
                       className="w-full h-full object-cover"
                     />
@@ -643,7 +1011,7 @@ const Home = () => {
                 <div className="w-64 h-40 bg-gray-800 rounded-lg p-2 shadow-2xl transform group-hover:scale-110 transition-transform duration-500">
                   <div className="w-full h-full bg-white rounded overflow-hidden">
                     <img 
-                      src="/api/placeholder/300/200" 
+                      src="/src/assets/frame-tune-logo.jpg" 
                       alt="Branding Project" 
                       className="w-full h-full object-cover"
                     />
@@ -681,7 +1049,7 @@ const Home = () => {
             <div className="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105">
               <div className="h-64 bg-gray-200 relative overflow-hidden">
                 <img 
-                  src="/api/placeholder/300/400" 
+                  src="/src/assets/frame-tune-logo.jpg" 
                   alt="Manirakiza Augustin" 
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                 />
@@ -708,7 +1076,7 @@ const Home = () => {
             <div className="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105">
               <div className="h-64 bg-gray-200 relative overflow-hidden">
                 <img 
-                  src="/api/placeholder/300/400" 
+                  src="/src/assets/frame-tune-logo.jpg" 
                   alt="Anselme Mugisha" 
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                 />
@@ -735,7 +1103,7 @@ const Home = () => {
             <div className="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105">
               <div className="h-64 bg-gray-200 relative overflow-hidden">
                 <img 
-                  src="/api/placeholder/300/400" 
+                  src="/src/assets/frame-tune-logo.jpg" 
                   alt="Kanyanzige Pacique" 
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                 />
@@ -762,7 +1130,7 @@ const Home = () => {
             <div className="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105">
               <div className="h-64 bg-gray-200 relative overflow-hidden">
                 <img 
-                  src="/api/placeholder/300/400" 
+                  src="/src/assets/frame-tune-logo.jpg" 
                   alt="Hakizimana Fabrice" 
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                 />
@@ -790,7 +1158,7 @@ const Home = () => {
 
       {/* Testimonials */}
       <section className="py-20 bg-studio-navy text-white relative overflow-hidden">
-        <div className="absolute inset-0 bg-cover bg-center opacity-30" style={{ backgroundImage: 'url(/api/placeholder/1920/1080)' }}></div>
+        <div className="absolute inset-0 bg-cover bg-center opacity-30" style={{ backgroundImage: 'url(/src/assets/hero-bg.jpg)' }}></div>
         <div className="relative z-10">
           <div className="container mx-auto px-4">
             <div className="text-center mb-16">
@@ -859,7 +1227,7 @@ const Home = () => {
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             <Card className="overflow-hidden hover:shadow-lg transition-shadow">
               <div className="h-48 bg-gray-200">
-                <img src="/api/placeholder/400/300" alt="Art passion blog" className="w-full h-full object-cover" />
+                <img src="/src/assets/projects-graphic-design.jpg" alt="Art passion blog" className="w-full h-full object-cover" />
               </div>
               <CardContent className="p-6">
                 <h3 className="text-lg font-bold text-studio-navy mb-3 line-clamp-2">
@@ -876,7 +1244,7 @@ const Home = () => {
 
             <Card className="overflow-hidden hover:shadow-lg transition-shadow">
               <div className="h-48 bg-gray-200">
-                <img src="/api/placeholder/400/300" alt="Business photography blog" className="w-full h-full object-cover" />
+                <img src="/src/assets/photography-service.jpg" alt="Business photography blog" className="w-full h-full object-cover" />
               </div>
               <CardContent className="p-6">
                 <h3 className="text-lg font-bold text-studio-navy mb-3 line-clamp-2">
@@ -893,7 +1261,7 @@ const Home = () => {
 
             <Card className="overflow-hidden hover:shadow-lg transition-shadow">
               <div className="h-48 bg-gray-200">
-                <img src="/api/placeholder/400/300" alt="Home decor art blog" className="w-full h-full object-cover" />
+                <img src="/src/assets/editing-service.jpg" alt="Home decor art blog" className="w-full h-full object-cover" />
               </div>
               <CardContent className="p-6">
                 <h3 className="text-lg font-bold text-studio-navy mb-3 line-clamp-2">
@@ -910,7 +1278,7 @@ const Home = () => {
 
             <Card className="overflow-hidden hover:shadow-lg transition-shadow">
               <div className="h-48 bg-gray-200">
-                <img src="/api/placeholder/400/300" alt="Photography brand story blog" className="w-full h-full object-cover" />
+                <img src="/src/assets/videography-service.jpg" alt="Photography brand story blog" className="w-full h-full object-cover" />
               </div>
               <CardContent className="p-6">
                 <h3 className="text-lg font-bold text-studio-navy mb-3 line-clamp-2">
@@ -932,19 +1300,21 @@ const Home = () => {
       <section className="py-20 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-4">
-              <span className="text-primary">Photography</span>
-              <span className="text-studio-orange"> pricing packages</span>
+            <h2 className="text-4xl font-bold text-studio-navy mb-4">
+              Photography <span className="text-studio-orange">pricing packages</span>
             </h2>
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+              Choose the perfect photography package for your needs. All packages include professional editing and high-quality delivery.
+            </p>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {/* Basic Package */}
-            <Card className="relative overflow-hidden bg-gradient-to-br from-orange-400 to-orange-600 text-white">
+            <Card className="relative overflow-hidden bg-gradient-to-br from-orange-400 to-orange-600 text-white flex flex-col h-full">
               <div className="absolute top-4 right-4 bg-green-500 text-white px-2 py-1 text-xs rounded">
                 NEW!
               </div>
-              <CardContent className="p-8 text-center">
+              <CardContent className="p-8 text-center flex flex-col h-full">
                 <h3 className="text-xl font-bold mb-6">Basic Photography Package</h3>
                 <div className="mb-6">
                   <div className="text-sm line-through opacity-75">FRW 500,000</div>
@@ -952,7 +1322,7 @@ const Home = () => {
                   <div className="text-sm">FRW</div>
                   <div className="text-xs opacity-75">Lifetime</div>
                 </div>
-                <ul className="text-left space-y-3 mb-8 text-sm">
+                <ul className="text-left space-y-3 mb-8 text-sm flex-1">
                   <li className="flex items-start">
                     <span className="text-green-300 mr-2">✓</span>
                     Up to 2 types of photography (choose from Portrait, Event, Product, Business, Corporate, Fashion, Headshots, or Real Estate)
@@ -974,19 +1344,21 @@ const Home = () => {
                     1 location
                   </li>
                 </ul>
-                <Button className="w-full bg-white text-orange-600 hover:bg-gray-100">
-                  Order now
-                </Button>
-                <p className="text-xs mt-2 opacity-75">Order now and enjoy promo</p>
+                <div className="mt-auto">
+                  <Button className="w-full bg-white text-orange-600 hover:bg-gray-100">
+                    Order now
+                  </Button>
+                  <p className="text-xs mt-2 opacity-75">Order now and enjoy promo</p>
+                </div>
               </CardContent>
             </Card>
 
             {/* Standard Package */}
-            <Card className="relative overflow-hidden bg-gradient-to-br from-blue-500 to-blue-700 text-white">
-              <div className="absolute top-4 right-4 bg-green-500 text-white px-2 py-1 text-xs rounded">
+            <Card className="relative overflow-hidden bg-gradient-to-br from-blue-500 to-blue-700 text-white flex flex-col h-full">
+              <div className="absolute top-4 right-4 bg-red-500 text-white px-2 py-1 text-xs rounded">
                 HOT!
               </div>
-              <CardContent className="p-8 text-center">
+              <CardContent className="p-8 text-center flex flex-col h-full">
                 <h3 className="text-xl font-bold mb-6">Standard Photography Plan</h3>
                 <div className="mb-6">
                   <div className="text-sm line-through opacity-75">FRW 1,500,000</div>
@@ -994,7 +1366,7 @@ const Home = () => {
                   <div className="text-sm">FRW</div>
                   <div className="text-xs opacity-75">Lifetime</div>
                 </div>
-                <ul className="text-left space-y-3 mb-8 text-sm">
+                <ul className="text-left space-y-3 mb-8 text-sm flex-1">
                   <li className="flex items-start">
                     <span className="text-green-300 mr-2">✓</span>
                     Up to 4 types of photography (choose from Portrait, Event, Product, Business, Corporate, Fashion, Headshots, or Real Estate)
@@ -1020,19 +1392,21 @@ const Home = () => {
                     Basic video clips for events (up to 2 minutes)
                   </li>
                 </ul>
-                <Button className="w-full bg-white text-blue-600 hover:bg-gray-100">
-                  Click Here
-                </Button>
-                <p className="text-xs mt-2 opacity-75">Order now</p>
+                <div className="mt-auto">
+                  <Button className="w-full bg-white text-blue-600 hover:bg-gray-100">
+                    Click Here
+                  </Button>
+                  <p className="text-xs mt-2 opacity-75">Order now</p>
+                </div>
               </CardContent>
             </Card>
 
             {/* Premium Package */}
-            <Card className="relative overflow-hidden bg-gradient-to-br from-purple-500 to-purple-700 text-white">
-              <div className="absolute top-4 right-4 bg-green-500 text-white px-2 py-1 text-xs rounded">
+            <Card className="relative overflow-hidden bg-gradient-to-br from-purple-500 to-purple-700 text-white flex flex-col h-full">
+              <div className="absolute top-4 right-4 bg-purple-500 text-white px-2 py-1 text-xs rounded">
                 BEST!
               </div>
-              <CardContent className="p-8 text-center">
+              <CardContent className="p-8 text-center flex flex-col h-full">
                 <h3 className="text-xl font-bold mb-6">Premium Photography Plan</h3>
                 <div className="mb-6">
                   <div className="text-sm line-through opacity-75">FRW 2,000,000</div>
@@ -1040,7 +1414,7 @@ const Home = () => {
                   <div className="text-sm">FRW</div>
                   <div className="text-xs opacity-75">Lifetime</div>
                 </div>
-                <ul className="text-left space-y-3 mb-8 text-sm">
+                <ul className="text-left space-y-3 mb-8 text-sm flex-1">
                   <li className="flex items-start">
                     <span className="text-green-300 mr-2">✓</span>
                     Up to 6 types of photography (choose from Portrait, Event, Product, Business, Corporate, Fashion, Headshots, or Real Estate)
@@ -1070,19 +1444,21 @@ const Home = () => {
                     High-quality print options for selected photos (e.g., canvas or album)
                   </li>
                 </ul>
-                <Button className="w-full bg-white text-purple-600 hover:bg-gray-100">
-                  Order now
-                </Button>
-                <p className="text-xs mt-2 opacity-75">Enjoy the promo</p>
+                <div className="mt-auto">
+                  <Button className="w-full bg-white text-purple-600 hover:bg-gray-100">
+                    Order now
+                  </Button>
+                  <p className="text-xs mt-2 opacity-75">Enjoy the promo</p>
+                </div>
               </CardContent>
             </Card>
 
             {/* Ultimate Package */}
-            <Card className="relative overflow-hidden bg-gradient-to-br from-green-500 to-green-700 text-white">
+            <Card className="relative overflow-hidden bg-gradient-to-br from-green-500 to-green-700 text-white flex flex-col h-full">
               <div className="absolute top-4 right-4 bg-red-500 text-white px-2 py-1 text-xs rounded">
                 POPULAR!
               </div>
-              <CardContent className="p-8 text-center">
+              <CardContent className="p-8 text-center flex flex-col h-full">
                 <h3 className="text-xl font-bold mb-6">Ultimate Photography Plan</h3>
                 <div className="mb-6">
                   <div className="text-sm line-through opacity-75">FRW 3,500,000</div>
@@ -1090,7 +1466,7 @@ const Home = () => {
                   <div className="text-sm">FRW</div>
                   <div className="text-xs opacity-75">Lifetime</div>
                 </div>
-                <ul className="text-left space-y-3 mb-8 text-sm">
+                <ul className="text-left space-y-3 mb-8 text-sm flex-1">
                   <li className="flex items-start">
                     <span className="text-green-300 mr-2">✓</span>
                     Unlimited types of photography (choose as many as needed from Portrait, Event, Product, Business, Corporate, Fashion, Headshots, or Real Estate)
@@ -1124,9 +1500,12 @@ const Home = () => {
                     Online gallery for sharing and downloading
                   </li>
                 </ul>
-                <Button className="w-full bg-white text-green-600 hover:bg-gray-100">
-                  Order now
-                </Button>
+                <div className="mt-auto">
+                  <Button className="w-full bg-white text-green-600 hover:bg-gray-100">
+                    Order now
+                  </Button>
+                  <p className="text-xs mt-2 opacity-75">Best value for money</p>
+                </div>
               </CardContent>
             </Card>
           </div>

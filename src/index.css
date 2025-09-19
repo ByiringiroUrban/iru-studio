@@ -36,7 +36,7 @@
 
     --radius: 0.5rem;
 
-    /* Studio specific colors */
+    /* Studio specific colors - Enhanced to match logo design */
     --studio-navy: 223 47% 11%;
     --studio-navy-foreground: 0 0% 100%;
     --studio-orange: 42 100% 50%;
@@ -44,17 +44,23 @@
     --studio-gray: 0 0% 85%;
     --studio-dark-gray: 0 0% 20%;
     
-    /* Gradients */
+    /* Enhanced gradients matching logo colors */
     --gradient-hero: linear-gradient(135deg, hsl(14 86% 62%), hsl(42 100% 50%));
     --gradient-accent: linear-gradient(135deg, hsl(231 75% 63%), hsl(231 85% 73%));
     --gradient-overlay: linear-gradient(135deg, rgba(0,0,0,0.6), rgba(0,0,0,0.3));
+    --gradient-logo: linear-gradient(135deg, hsl(42 100% 50%), hsl(14 86% 62%), hsl(231 75% 63%));
+    --gradient-card: linear-gradient(145deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
     
-    /* Shadows */
+    /* Enhanced shadows with logo-inspired colors */
     --shadow-card: 0 4px 20px rgba(0,0,0,0.1);
     --shadow-button: 0 4px 15px rgba(79,117,255,0.3);
+    --shadow-logo: 0 8px 32px rgba(255,165,0,0.3);
+    --shadow-accent: 0 4px 20px rgba(255,165,0,0.2);
     
-    /* Animations */
+    /* Enhanced animations */
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    --transition-glow: all 0.6s ease-in-out;
   }
 
   .dark {

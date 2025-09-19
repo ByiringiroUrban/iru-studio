@@ -25,3 +25,6 @@ const AnimatedSection = ({ children, className, amount = 0.2 }: AnimatedSectionP
 export default AnimatedSection;
 
 
+
+
+

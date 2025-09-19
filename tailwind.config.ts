@@ -60,13 +60,19 @@ export default {
         "gradient-hero": "var(--gradient-hero)",
         "gradient-accent": "var(--gradient-accent)",
         "gradient-overlay": "var(--gradient-overlay)",
+        "gradient-logo": "var(--gradient-logo)",
+        "gradient-card": "var(--gradient-card)",
       },
       boxShadow: {
         "card": "var(--shadow-card)",
         "button": "var(--shadow-button)",
+        "logo": "var(--shadow-logo)",
+        "accent": "var(--shadow-accent)",
       },
       transitionProperty: {
         "smooth": "var(--transition-smooth)",
+        "bounce": "var(--transition-bounce)",
+        "glow": "var(--transition-glow)",
       },
       borderRadius: {
         lg: "var(--radius)",

@@ -29,7 +29,7 @@ const Header = () => {
   return (
     <>
       <CompactHeader isVisible={showCompact} />
-      <header className={`w-full z-50 relative transition-transform duration-300 ${showCompact ? "-translate-y-full" : "translate-y-0"}`}>
+      <header className={`w-full z-50 sticky top-0 transition-transform duration-300 ${showCompact ? "-translate-y-full" : "translate-y-0"}`}>
         {/* Top Bar */}
         <div className="bg-studio-navy text-studio-navy-foreground py-2 px-4">
           <div className="container mx-auto flex flex-wrap justify-between items-center text-sm">
@@ -118,7 +118,7 @@ const Header = () => {
               <Link to="/contact" className="text-studio-navy hover:text-primary transition-colors text-sm">Contact</Link>
             </div>
             {/* Right actions */}
-            <div className="hidden lg:flex items-center ml-auto pl-6 space-x-4">
+            <div className="hidden lg:flex items-center ml-auto pl-6 space-x-3 mr-4">
               <form action="/search" method="GET" className="hidden md:block">
                 <input
                   type="text"
@@ -127,12 +127,12 @@ const Header = () => {
                   className="border border-gray-200 rounded-full px-3 py-1 text-sm focus:outline-none focus:ring-2 focus:ring-primary/30"
                 />
               </form>
-              <button className="text-studio-navy hover:text-primary transition-colors" aria-label="Add to cart">
-                <ShoppingCart className="w-6 h-6" />
+              <button className="text-studio-navy hover:text-primary transition-colors p-2" aria-label="Add to cart">
+                <ShoppingCart className="w-5 h-5" />
               </button>
             </div>
             {/* Mobile Search + Cart */}
-            <div className="lg:hidden flex items-center space-x-2">
+            <div className="lg:hidden flex items-center space-x-2 mr-2">
               <form action="/search" method="GET">
                 <input
                   type="text"
@@ -142,7 +142,7 @@ const Header = () => {
                 />
               </form>
               <button className="p-2 text-studio-navy" aria-label="Add to cart">
-                <ShoppingCart className="w-6 h-6" />
+                <ShoppingCart className="w-5 h-5" />
               </button>
             </div>
             {/* Mobile Menu Button */}
