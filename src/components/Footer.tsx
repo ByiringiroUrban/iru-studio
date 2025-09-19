@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { Facebook, Twitter, Linkedin, Youtube, Hash, Calendar, ArrowRight } from 'lucide-react';
+import { Facebook, Linkedin, Calendar, ArrowRight, Instagram, Pin, Play } from 'lucide-react';
 import frameTuneLogo from '/assets/logo.jpg';
 
 const Footer = () => {
@@ -27,21 +27,24 @@ const Footer = () => {
               We specialize in professional photography, cinematic videography, expert audio production, and immersive art experiences.
             </p>
             <div className="flex space-x-3">
-              <div className="w-8 h-8 border border-white/30 rounded flex items-center justify-center hover:bg-white/10 cursor-pointer transition-colors">
+              <a href="https://www.facebook.com/profile.php?id=61572664807980" target="_blank" rel="noreferrer" aria-label="Facebook" className="w-8 h-8 border border-white/30 rounded flex items-center justify-center hover:bg-white/10 cursor-pointer transition-colors">
                 <Facebook className="w-4 h-4 text-white" />
-              </div>
-              <div className="w-8 h-8 border border-white/30 rounded flex items-center justify-center hover:bg-white/10 cursor-pointer transition-colors">
-                <Twitter className="w-4 h-4 text-white" />
-              </div>
-              <div className="w-8 h-8 border border-white/30 rounded flex items-center justify-center hover:bg-white/10 cursor-pointer transition-colors">
+              </a>
+              <a href="https://www.facebook.com/frame.tune/" target="_blank" rel="noreferrer" aria-label="Facebook Page" className="w-8 h-8 border border-white/30 rounded flex items-center justify-center hover:bg-white/10 cursor-pointer transition-colors">
+                <Facebook className="w-4 h-4 text-white" />
+              </a>
+              <a href="https://www.instagram.com/frame_tunestudio/" target="_blank" rel="noreferrer" aria-label="Instagram" className="w-8 h-8 border border-white/30 rounded flex items-center justify-center hover:bg-white/10 cursor-pointer transition-colors">
+                <Instagram className="w-4 h-4 text-white" />
+              </a>
+              <a href="https://www.linkedin.com/in/frame-and-tune-studio-037b43340/" target="_blank" rel="noreferrer" aria-label="LinkedIn" className="w-8 h-8 border border-white/30 rounded flex items-center justify-center hover:bg-white/10 cursor-pointer transition-colors">
                 <Linkedin className="w-4 h-4 text-white" />
-              </div>
-              <div className="w-8 h-8 border border-white/30 rounded flex items-center justify-center hover:bg-white/10 cursor-pointer transition-colors">
-                <Youtube className="w-4 h-4 text-white" />
-              </div>
-              <div className="w-8 h-8 border border-white/30 rounded flex items-center justify-center hover:bg-white/10 cursor-pointer transition-colors">
-                <Hash className="w-4 h-4 text-white" />
-              </div>
+              </a>
+              <a href="https://www.pinterest.com/frameandtunestudio/" target="_blank" rel="noreferrer" aria-label="Pinterest" className="w-8 h-8 border border-white/30 rounded flex items-center justify-center hover:bg-white/10 cursor-pointer transition-colors">
+                <Pin className="w-4 h-4 text-white" />
+              </a>
+              <a href="https://www.tiktok.com/@frameandtunestudio1?lang=en" target="_blank" rel="noreferrer" aria-label="TikTok" className="w-8 h-8 border border-white/30 rounded flex items-center justify-center hover:bg-white/10 cursor-pointer transition-colors">
+                <Play className="w-4 h-4 text-white" />
+              </a>
             </div>
           </div>
 

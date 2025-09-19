@@ -789,7 +789,7 @@ const Home = () => {
                   Brand Story As Frame and Tune Studio, we understand 
                   that visuals are crucial for effective communication.
                 </p>
-                <Link to="/services/design" className="inline-flex items-center text-green-600 hover:text-green-700 text-sm font-medium transition-colors">
+                <Link to="/services/arts-creative-design" className="inline-flex items-center text-green-600 hover:text-green-700 text-sm font-medium transition-colors">
                   Read More 
                   <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
@@ -811,7 +811,7 @@ const Home = () => {
                   Transform your photos and videos into professional works of art with Frame and 
                   Tune Studio.
                 </p>
-                <Link to="/services/editing" className="inline-flex items-center text-green-600 hover:text-green-700 text-sm font-medium transition-colors">
+                <Link to="/services/editing-retouching" className="inline-flex items-center text-green-600 hover:text-green-700 text-sm font-medium transition-colors">
                   Read More 
                   <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />

@@ -2,6 +2,7 @@ import React, { useMemo, useState } from 'react';
 import { ServiceCategory, pricingData } from '@/data/pricing';
 import { Button } from '@/components/ui/button';
 import { motion } from 'framer-motion';
+import framesBanner from '@/assets/projects-graphic-design.jpg';
 import { staggerContainer, fadeInUp } from '@/lib/animations';
 
 const FRAME_SERVICE = pricingData.find(s => s.service === 'frames');
@@ -16,10 +17,16 @@ const Frames = () => {
 
   return (
     <div className="min-h-screen">
-      <div className="bg-gradient-to-r from-purple-600 to-primary text-white py-14">
+      <div className="relative">
+        <div className="absolute inset-0">
+          <img src={framesBanner} alt="Frames & Photobooks" className="w-full h-full object-cover" />
+          <div className="absolute inset-0 bg-black/40" />
+        </div>
+        <div className="relative text-white py-14">
         <div className="container mx-auto px-4">
           <h1 className="text-4xl md:text-5xl font-extrabold">Frames & Photobooks</h1>
           <p className="opacity-90 mt-2 max-w-2xl">Explore premium photobooks, classic wood frames, grass frames, and specialized packages.</p>
+        </div>
         </div>
       </div>
 

@@ -8,11 +8,12 @@ import {
   Mail,
   Clock,
   Facebook,
-  Twitter,
   Linkedin,
   Pin,
+  Instagram,
   MessageCircle,
   ShoppingCart,
+  Play,
 } from "lucide-react";
 import CompactHeader from "./CompactHeader";
 import frameTuneLogo from "/assets/logo.jpg";
@@ -29,7 +30,7 @@ const Header = () => {
   return (
     <>
       <CompactHeader isVisible={showCompact} />
-      <header className={`w-full z-50 sticky top-0 transition-transform duration-300 ${showCompact ? "-translate-y-full" : "translate-y-0"}`}>
+      <header className={`w-full z-50 sticky top-0 bg-white transition-transform duration-300 ${showCompact ? "-translate-y-full" : "translate-y-0"}`}>
         {/* Top Bar */}
         <div className="bg-studio-navy text-studio-navy-foreground py-2 px-4">
           <div className="container mx-auto flex flex-wrap justify-between items-center text-sm">
@@ -44,19 +45,23 @@ const Header = () => {
               </div>
             </div>
             <div className="flex items-center space-x-4">
-              <a href="https://facebook.com" target="_blank" rel="noreferrer" className="w-6 h-6 bg-primary rounded flex items-center justify-center hover:bg-primary/80 cursor-pointer">
+             
+              <a href="https://www.facebook.com/frame.tune/" target="_blank" rel="noreferrer" aria-label="Facebook Page" className="w-6 h-6 bg-primary rounded flex items-center justify-center hover:bg-primary/80 cursor-pointer">
                 <Facebook className="w-3 h-3 text-white" />
               </a>
-              <a href="https://twitter.com" target="_blank" rel="noreferrer" className="w-6 h-6 bg-primary rounded flex items-center justify-center hover:bg-primary/80 cursor-pointer">
-                <Twitter className="w-3 h-3 text-white" />
+              <a href="https://www.instagram.com/frame_tunestudio/" target="_blank" rel="noreferrer" aria-label="Instagram" className="w-6 h-6 bg-primary rounded flex items-center justify-center hover:bg-primary/80 cursor-pointer">
+                <Instagram className="w-3 h-3 text-white" />
               </a>
-              <a href="https://linkedin.com" target="_blank" rel="noreferrer" className="w-6 h-6 bg-primary rounded flex items-center justify-center hover:bg-primary/80 cursor-pointer">
+              <a href="https://www.linkedin.com/in/frame-and-tune-studio-037b43340/" target="_blank" rel="noreferrer" aria-label="LinkedIn" className="w-6 h-6 bg-primary rounded flex items-center justify-center hover:bg-primary/80 cursor-pointer">
                 <Linkedin className="w-3 h-3 text-white" />
               </a>
-              <a href="https://pinterest.com" target="_blank" rel="noreferrer" className="w-6 h-6 bg-primary rounded flex items-center justify-center hover:bg-primary/80 cursor-pointer">
+              <a href="https://www.pinterest.com/frameandtunestudio/" target="_blank" rel="noreferrer" aria-label="Pinterest" className="w-6 h-6 bg-primary rounded flex items-center justify-center hover:bg-primary/80 cursor-pointer">
                 <Pin className="w-3 h-3 text-white" />
               </a>
-              <a href="https://wa.me/250795381733" target="_blank" rel="noreferrer" className="w-6 h-6 bg-primary rounded flex items-center justify-center hover:bg-primary/80 cursor-pointer">
+              <a href="https://www.tiktok.com/@frameandtunestudio1?lang=en" target="_blank" rel="noreferrer" aria-label="TikTok" className="w-6 h-6 bg-primary rounded flex items-center justify-center hover:bg-primary/80 cursor-pointer">
+                <Play className="w-3 h-3 text-white" />
+              </a>
+              <a href="https://wa.me/250795381733" target="_blank" rel="noreferrer" aria-label="WhatsApp" className="w-6 h-6 bg-primary rounded flex items-center justify-center hover:bg-primary/80 cursor-pointer">
                 <MessageCircle className="w-3 h-3 text-white" />
               </a>
               <Button asChild className="ml-3 bg-primary hover:bg-primary/90 text-primary-foreground px-3 py-1 text-xs">

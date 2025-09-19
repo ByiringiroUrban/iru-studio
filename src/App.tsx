@@ -11,6 +11,7 @@ import WhoWeAre from "./pages/about/WhoWeAre";
 import WhyChooseUs from "./pages/about/WhyChooseUs";
 import OurTeam from "./pages/about/OurTeam";
 import ServicesLanding from "./pages/services/ServicesLanding";
+import ArtsCreativeDesign from "./pages/services/ArtsCreativeDesign";
 import Photography from "./pages/services/Photography";
 import Videography from "./pages/services/Videography";
 import EditingRetouching from "./pages/services/EditingRetouching";
@@ -40,6 +41,7 @@ const AppRoutes = () => {
           <Route path="/about/why-choose-us" element={<WhyChooseUs />} />
           <Route path="/about/our-team" element={<OurTeam />} />
           <Route path="/services" element={<ServicesLanding />} />
+          <Route path="/services/arts-creative-design" element={<ArtsCreativeDesign />} />
           <Route path="/services/photography" element={<Photography />} />
           <Route path="/services/videography" element={<Videography />} />
           <Route path="/services/editing-retouching" element={<EditingRetouching />} />
