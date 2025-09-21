@@ -81,10 +81,10 @@ const Header = () => {
 
             {/* Desktop Navigation */}
             <div className="hidden lg:flex flex-1 justify-center items-center space-x-6">
-              <Link to="/" className="text-studio-navy hover:text-primary transition-colors text-sm">Home</Link>
+              <Link to="/" className="text-black font-bold hover:text-primary transition-colors text-sm">Home</Link>
               {/* About Dropdown */}
               <div className="relative group">
-                <button className="flex items-center space-x-1 text-studio-navy hover:text-primary transition-colors text-sm">
+                <button className="flex items-center space-x-1 text-black font-bold hover:text-primary transition-colors text-sm">
                   <span>About</span>
                   <ChevronDown className="w-3 h-3" />
                 </button>
@@ -96,7 +96,7 @@ const Header = () => {
               </div>
               {/* Services Dropdown */}
               <div className="relative group">
-                <button className="flex items-center space-x-1 text-studio-navy hover:text-primary transition-colors text-sm">
+                <button className="flex items-center space-x-1 text-black font-bold hover:text-primary transition-colors text-sm">
                   <span>Services</span>
                   <ChevronDown className="w-3 h-3" />
                 </button>
@@ -105,13 +105,14 @@ const Header = () => {
                   <Link to="/services/videography" className="block px-3 py-2 text-xs text-studio-navy hover:bg-gray-50">Videography</Link>
                   <Link to="/services/editing-retouching" className="block px-3 py-2 text-xs text-studio-navy hover:bg-gray-50">Editing & Retouching</Link>
                   <Link to="/services/audio-production" className="block px-3 py-2 text-xs text-studio-navy hover:bg-gray-50">Audio Production</Link>
+                  <Link to="/services/dancing" className="block px-3 py-2 text-xs text-studio-navy hover:bg-gray-50">Dancing</Link>
                   <Link to="/internships" className="block px-3 py-2 text-xs text-studio-navy hover:bg-gray-50">Internships</Link>
                 </div>
               </div>
-              <Link to="/gallery" className="text-studio-navy hover:text-primary transition-colors text-sm">Gallery</Link>
+              <Link to="/gallery" className="text-black font-bold hover:text-primary transition-colors text-sm">Gallery</Link>
               {/* Pricing Dropdown */}
               <div className="relative group">
-                <button className="flex items-center space-x-1 text-studio-navy hover:text-primary transition-colors text-sm">
+                <button className="flex items-center space-x-1 text-black font-bold hover:text-primary transition-colors text-sm">
                   <span>Pricing</span>
                   <ChevronDown className="w-3 h-3" />
                 </button>
@@ -120,7 +121,7 @@ const Header = () => {
                   <Link to="/pricing/frames" className="block px-3 py-2 text-xs text-studio-navy hover:bg-gray-50">Frames</Link>
                 </div>
               </div>
-              <Link to="/contact" className="text-studio-navy hover:text-primary transition-colors text-sm">Contact</Link>
+              <Link to="/contact" className="text-black font-bold hover:text-primary transition-colors text-sm">Contact</Link>
             </div>
             {/* Right actions */}
             <div className="hidden lg:flex items-center ml-auto pl-6 space-x-3 mr-4">
@@ -159,10 +160,10 @@ const Header = () => {
           {isMenuOpen && (
             <div className="lg:hidden py-4 border-t relative z-50 bg-white">
               <div className="space-y-3">
-                <Link to="/" className="block text-studio-navy hover:text-primary text-sm">Home</Link>
+                <Link to="/" className="block text-black font-bold hover:text-primary text-sm">Home</Link>
                 {/* Mobile About Submenu */}
                 <div>
-                  <button onClick={() => toggleSubmenu("about")} className="flex items-center justify-between w-full text-studio-navy hover:text-primary text-sm">
+                  <button onClick={() => toggleSubmenu("about")} className="flex items-center justify-between w-full text-black font-bold hover:text-primary text-sm">
                     <span>About</span>
                     <ChevronDown className={`w-3 h-3 transform transition-transform ${openSubmenu === "about" ? "rotate-180" : ""}`} />
                   </button>
@@ -176,7 +177,7 @@ const Header = () => {
                 </div>
                 {/* Mobile Services Submenu */}
                 <div>
-                  <button onClick={() => toggleSubmenu("services")} className="flex items-center justify-between w-full text-studio-navy hover:text-primary text-sm">
+                  <button onClick={() => toggleSubmenu("services")} className="flex items-center justify-between w-full text-black font-bold hover:text-primary text-sm">
                     <span>Services</span>
                     <ChevronDown className={`w-3 h-3 transform transition-transform ${openSubmenu === "services" ? "rotate-180" : ""}`} />
                   </button>
@@ -186,14 +187,15 @@ const Header = () => {
                       <Link to="/services/videography" className="block text-xs text-studio-navy hover:text-primary">Videography</Link>
                       <Link to="/services/editing-retouching" className="block text-xs text-studio-navy hover:text-primary">Editing & Retouching</Link>
                       <Link to="/services/audio-production" className="block text-xs text-studio-navy hover:text-primary">Audio Production</Link>
+                      <Link to="/services/dancing" className="block text-xs text-studio-navy hover:text-primary">Dancing</Link>
                       <Link to="/internships" className="block text-xs text-studio-navy hover:text-primary">Internships</Link>
                     </div>
                   )}
                 </div>
-                <Link to="/gallery" className="block text-studio-navy hover:text-primary text-sm">Gallery</Link>
+                <Link to="/gallery" className="block text-black font-bold hover:text-primary text-sm">Gallery</Link>
                 {/* Mobile Pricing Submenu */}
                 <div>
-                  <button onClick={() => toggleSubmenu("pricing")} className="flex items-center justify-between w-full text-studio-navy hover:text-primary text-sm">
+                  <button onClick={() => toggleSubmenu("pricing")} className="flex items-center justify-between w-full text-black font-bold hover:text-primary text-sm">
                     <span>Pricing</span>
                     <ChevronDown className={`w-3 h-3 transform transition-transform ${openSubmenu === "pricing" ? "rotate-180" : ""}`} />
                   </button>
@@ -204,7 +206,7 @@ const Header = () => {
                     </div>
                   )}
                 </div>
-                <Link to="/contact" className="block text-studio-navy hover:text-primary text-sm">Contact</Link>
+                <Link to="/contact" className="block text-black font-bold hover:text-primary text-sm">Contact</Link>
               </div>
             </div>
           )}

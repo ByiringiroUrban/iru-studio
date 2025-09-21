@@ -447,48 +447,6 @@ const Pricing = () => {
         </div>
       </section>
 
-      {/* Notes & Terms */}
-      <section className="py-20 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="grid lg:grid-cols-2 gap-12">
-            <div>
-              <h2 className="text-3xl font-bold text-studio-navy mb-6">Terms & Conditions</h2>
-              <div className="space-y-4 text-gray-600">
-                <div>
-                  <h4 className="font-semibold text-studio-navy mb-2">Deposit Policy</h4>
-                  <p className="text-sm">50% deposit required to secure booking. Remaining balance due upon completion.</p>
-                </div>
-                <div>
-                  <h4 className="font-semibold text-studio-navy mb-2">Delivery Times</h4>
-                  <p className="text-sm">Standard turnaround is 5-7 business days. Rush delivery available for additional fee.</p>
-                </div>
-                <div>
-                  <h4 className="font-semibold text-studio-navy mb-2">Travel Fees</h4>
-                  <p className="text-sm">Location shoots within Kigali included. Additional travel charges apply for locations outside the city.</p>
-                </div>
-              </div>
-            </div>
-            
-            <div>
-              <h2 className="text-3xl font-bold text-studio-navy mb-6">Payment Methods</h2>
-              <div className="space-y-4 text-gray-600">
-                <div>
-                  <h4 className="font-semibold text-studio-navy mb-2">Accepted Methods</h4>
-                  <p className="text-sm">Bank transfer, Mobile Money (MTN/Airtel), Cash, and major credit cards.</p>
-                </div>
-                <div>
-                  <h4 className="font-semibold text-studio-navy mb-2">Cancellation Policy</h4>
-                  <p className="text-sm">24-hour notice required for cancellation. Deposits are non-refundable but can be applied to future bookings.</p>
-                </div>
-                <div>
-                  <h4 className="font-semibold text-studio-navy mb-2">Custom Packages</h4>
-                  <p className="text-sm">Need something specific? Contact us for custom package pricing tailored to your requirements.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* CTA Section */}
       <section className="py-20 bg-primary text-primary-foreground">

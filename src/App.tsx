@@ -16,6 +16,7 @@ import Photography from "./pages/services/Photography";
 import Videography from "./pages/services/Videography";
 import EditingRetouching from "./pages/services/EditingRetouching";
 import AudioProduction from "./pages/services/AudioProduction";
+import Dancing from "./pages/services/Dancing";
 import Contact from "./pages/Contact";
 import Internships from "./pages/Internships";
 import InternshipDetail from "./pages/InternshipDetail";
@@ -46,6 +47,7 @@ const AppRoutes = () => {
           <Route path="/services/videography" element={<Videography />} />
           <Route path="/services/editing-retouching" element={<EditingRetouching />} />
           <Route path="/services/audio-production" element={<AudioProduction />} />
+          <Route path="/services/dancing" element={<Dancing />} />
           <Route path="/internships" element={<Internships />} />
           <Route path="/internships/:slug" element={<InternshipDetail />} />
           <Route path="/pricing" element={<Pricing />} />

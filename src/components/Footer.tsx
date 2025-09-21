@@ -72,18 +72,6 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
-                <Link to="/policies-terms" className="text-sm text-gray-300 hover:text-white transition-colors flex items-center">
-                  <ArrowRight className="w-3 h-3 mr-2" />
-                  Policies & Terms
-                </Link>
-              </li>
-              <li>
-                <Link to="/terms-conditions" className="text-sm text-gray-300 hover:text-white transition-colors flex items-center">
-                  <ArrowRight className="w-3 h-3 mr-2" />
-                  Terms and Conditions
-                </Link>
-              </li>
-              <li>
                 <Link to="/privacy-policy" className="text-sm text-gray-300 hover:text-white transition-colors flex items-center">
                   <ArrowRight className="w-3 h-3 mr-2" />
                   Privacy Policy
@@ -167,8 +155,6 @@ const Footer = () => {
           <div className="flex space-x-6 mt-4 md:mt-0">
             <Link to="/" className="text-sm text-gray-400 hover:text-white transition-colors">Home</Link>
             <Link to="/services" className="text-sm text-gray-400 hover:text-white transition-colors">Our Services</Link>
-            <Link to="/policies-terms" className="text-sm text-gray-400 hover:text-white transition-colors">Policies & Terms</Link>
-            <Link to="/terms-conditions" className="text-sm text-gray-400 hover:text-white transition-colors">Terms and Conditions</Link>
             <Link to="/privacy-policy" className="text-sm text-gray-400 hover:text-white transition-colors">Privacy Policy</Link>
           </div>
         </div>
