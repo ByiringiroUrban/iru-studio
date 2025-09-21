@@ -3,6 +3,7 @@
 ## How can I edit this code?
 
 **Use your preferred IDE**
+deploy-6
 
 If you want to work locally using your own IDE, you can clone this repo and push changes.
 
