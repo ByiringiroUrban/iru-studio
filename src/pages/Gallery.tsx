@@ -75,17 +75,46 @@ const Gallery = () => {
   const pageSize = 9;
 
   const filtered = useMemo(() => {
-    const key = (active || 'all').toLowerCase();
-    if (key === 'all') return ITEMS;
-    return ITEMS.filter((i) => i.category === key);
+    console.log('Filtering with active category:', active);
+    console.log('Total items:', ITEMS.length);
+    
+    const key = (active || 'all').toLowerCase().trim();
+    if (key === 'all') {
+      console.log('Showing all items');
+      return ITEMS;
+    }
+    
+    const filteredItems = ITEMS.filter((item) => {
+      const itemCategory = (item.category || '').toLowerCase().trim();
+      const matches = itemCategory === key;
+      return matches;
+    });
+    
+    console.log(`Filtered ${filteredItems.length} items for category: ${key}`);
+    return filteredItems;
   }, [active]);
 
   const totalPages = Math.max(1, Math.ceil(filtered.length / pageSize));
   const safePage = Math.min(Math.max(1, page), totalPages);
+  
   const currentItems = useMemo(() => {
     const start = (safePage - 1) * pageSize;
-    return filtered.slice(start, start + pageSize);
+    const items = filtered.slice(start, start + pageSize);
+    console.log(`Showing ${items.length} items on page ${safePage}`);
+    return items;
   }, [filtered, safePage]);
+
+  const handleCategoryChange = (categoryKey: string) => {
+    console.log('Changing category to:', categoryKey);
+    setActive(categoryKey);
+    setPage(1); // Reset to first page when changing category
+  };
+
+  // Debug: Log current state
+  console.log('Current active category:', active);
+  console.log('Current page:', page);
+  console.log('Filtered items count:', filtered.length);
+  console.log('Current items count:', currentItems.length);
 
   return (
     <div className="min-h-screen">
@@ -106,15 +135,31 @@ const Gallery = () => {
             <motion.button
               key={c.key}
               variants={fadeInUp}
-              onClick={() => { setActive(c.key); setPage(1); }}
-              className={`px-4 py-2 rounded-full border text-sm ${active === c.key ? 'bg-primary text-white border-primary' : 'bg-white text-studio-navy border-gray-200 hover:bg-gray-50'}`}
+              onClick={() => handleCategoryChange(c.key)}
+              className={`px-4 py-2 rounded-full border text-sm transition-all duration-200 ${
+                active === c.key 
+                  ? 'bg-primary text-white border-primary' 
+                  : 'bg-white text-studio-navy border-gray-200 hover:bg-gray-50'
+              }`}
             >
               {c.label}
             </motion.button>
           ))}
         </motion.div>
 
-        <motion.div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6" variants={staggerContainer(0.08)} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.15 }}>
+        {/* Debug info - remove in production */}
+        <div className="mb-4 text-sm text-gray-500">
+          Active: {active} | Total: {ITEMS.length} | Filtered: {filtered.length} | Showing: {currentItems.length}
+        </div>
+
+        <motion.div 
+          key={`${active}-${safePage}`} // Force re-render when category or page changes
+          className="grid md:grid-cols-2 lg:grid-cols-3 gap-6" 
+          variants={staggerContainer(0.08)} 
+          initial="hidden" 
+          whileInView="visible" 
+          viewport={{ once: true, amount: 0.15 }}
+        >
           {currentItems.map((item) => (
             <motion.div key={item.id} variants={fadeInUp} className="group bg-white rounded-2xl overflow-hidden shadow-card hover:shadow-xl transition-all duration-300">
               <div className="aspect-video bg-gray-100 overflow-hidden relative">
@@ -153,6 +198,13 @@ const Gallery = () => {
           ))}
         </motion.div>
 
+        {/* Show message when no items found */}
+        {filtered.length === 0 && (
+          <div className="text-center py-12">
+            <div className="text-gray-500 text-lg">No items found for this category</div>
+          </div>
+        )}
+
         {/* Pagination */}
         {totalPages > 1 && (
           <div className="mt-10 flex items-center justify-center gap-2">
@@ -168,7 +220,11 @@ const Gallery = () => {
               <button
                 key={i}
                 onClick={() => setPage(i + 1)}
-                className={`w-9 h-9 rounded-full border ${safePage === i + 1 ? 'bg-primary text-white border-primary' : 'bg-white text-studio-navy border-gray-200 hover:bg-gray-50'}`}
+                className={`w-9 h-9 rounded-full border transition-all duration-200 ${
+                  safePage === i + 1 
+                    ? 'bg-primary text-white border-primary' 
+                    : 'bg-white text-studio-navy border-gray-200 hover:bg-gray-50'
+                }`}
               >
                 {i + 1}
               </button>
@@ -189,10 +245,3 @@ const Gallery = () => {
 };
 
 export default Gallery;
-
-
-
-
-
-
-
