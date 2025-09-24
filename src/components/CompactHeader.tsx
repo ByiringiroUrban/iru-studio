@@ -115,6 +115,9 @@ const CompactHeader: React.FC<CompactHeaderProps> = ({ isVisible }) => {
                                 className="text-studio-navy hover:text-primary transition-colors text-sm">
                                 Internships
              </Link>
+            <Link to="/login" className="text-studio-navy hover:text-primary transition-colors text-sm">
+              Login
+            </Link>
           </div>
 
           {/* No Book Now here; moved to main header top bar */}
@@ -192,6 +195,9 @@ const CompactHeader: React.FC<CompactHeaderProps> = ({ isVisible }) => {
               </Link>
               <Link to="/contact" className="block text-studio-navy hover:text-primary text-sm">
                 Contact
+              </Link>
+              <Link to="/login" className="block text-studio-navy hover:text-primary text-sm">
+                Login
               </Link>
               
               <Button asChild className="w-full bg-primary hover:bg-primary/90 text-primary-foreground text-sm">

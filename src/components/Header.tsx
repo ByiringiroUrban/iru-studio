@@ -17,11 +17,13 @@ import {
 } from "lucide-react";
 import CompactHeader from "./CompactHeader";
 import frameTuneLogo from "/assets/logo.jpg";
+import { useAuth } from "@/context/AuthContext";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [openSubmenu, setOpenSubmenu] = useState<string | null>(null);
   const [showCompact, setShowCompact] = useState(false);
+  const { user, logout } = useAuth();
 
   const toggleSubmenu = (menu: string) => {
     setOpenSubmenu((previouslyOpen) => (previouslyOpen === menu ? null : menu));
@@ -64,7 +66,8 @@ const Header = () => {
               <a href="https://wa.me/250795381733" target="_blank" rel="noreferrer" aria-label="WhatsApp" className="w-6 h-6 bg-primary rounded flex items-center justify-center hover:bg-primary/80 cursor-pointer">
                 <MessageCircle className="w-3 h-3 text-white" />
               </a>
-              <Button asChild className="ml-3 bg-primary hover:bg-primary/90 text-primary-foreground px-3 py-1 text-xs">
+         
+              <Button asChild className="ml-2 bg-primary hover:bg-primary/90 text-primary-foreground px-3 py-1 text-xs">
                 <Link to="/book-now">BOOK NOW</Link>
               </Button>
             </div>
@@ -132,6 +135,27 @@ const Header = () => {
                   className="border border-gray-200 rounded-full px-3 py-1 text-sm focus:outline-none focus:ring-2 focus:ring-primary/30"
                 />
               </form>
+             
+
+              
+              {user ? (
+                <div className="relative group">
+                  <button className="text-black font-bold text-sm flex items-center space-x-2 hover:text-primary">
+                    <img src="/assets/default-avatar.png" alt="avatar" className="w-6 h-6 rounded-full object-cover" />
+                    <ChevronDown className="w-3 h-3" />
+                  </button>
+                  <div className="absolute right-0 mt-2 w-44 bg-white rounded-lg shadow-xl border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+                    <Link to="/dashboard" className="block px-3 py-2 text-sm text-studio-navy hover:bg-gray-50">Profile</Link>
+                    <Link to="/settings" className="block px-3 py-2 text-sm text-studio-navy hover:bg-gray-50">Settings</Link>
+                    {user.role === 'ADMIN' && (
+                      <Link to="/dashboard/admin" className="block px-3 py-2 text-sm text-studio-navy hover:bg-gray-50">Admin Panel</Link>
+                    )}
+                    <button onClick={logout} className="w-full text-left px-3 py-2 text-sm text-red-600 hover:bg-red-50">Logout</button>
+                  </div>
+                </div>
+              ) : (
+                <Link to="/login" className="text-black font-bold hover:text-primary text-sm">Login</Link>
+              )}
               <button className="text-studio-navy hover:text-primary transition-colors p-2" aria-label="Add to cart">
                 <ShoppingCart className="w-5 h-5" />
               </button>
@@ -206,6 +230,9 @@ const Header = () => {
                   )}
                 </div>
                 <Link to="/contact" className="block text-black font-bold hover:text-primary text-sm">Contact</Link>
+                {!user && (
+                  <Link to="/login" className="block text-black font-bold hover:text-primary text-sm">Login</Link>
+                )}
               </div>
             </div>
           )}

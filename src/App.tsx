@@ -27,6 +27,13 @@ import { AnimatePresence, motion } from "framer-motion";
 import { pageTransition, fadeIn } from "@/lib/animations";
 import Frames from "./pages/Frames";
 import Chatbot from "./components/Chatbot";
+import { AuthProvider } from "./context/AuthContext";
+import Login from "./pages/auth/Login";
+import Register from "./pages/auth/Register";
+import ForgotPassword from "./pages/auth/ForgotPassword";
+import UserDashboard from "./pages/dashboard/UserDashboard";
+import AdminDashboard from "./pages/dashboard/AdminDashboard";
+import Settings from "./pages/Settings";
 
 const queryClient = new QueryClient();
 
@@ -37,6 +44,12 @@ const AppRoutes = () => {
       <motion.div key={location.pathname} variants={fadeIn} initial="hidden" animate="visible" exit={{ opacity: 0 }}>
         <Routes location={location}>
           <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/forgot" element={<ForgotPassword />} />
+          <Route path="/dashboard" element={<UserDashboard />} />
+          <Route path="/dashboard/admin" element={<AdminDashboard />} />
+          <Route path="/settings" element={<Settings />} />
           <Route path="/about/who-we-are" element={<WhoWeAre />} />
           <Route path="/about/why-choose-us" element={<WhyChooseUs />} />
           <Route path="/services" element={<ServicesLanding />} />
@@ -67,14 +80,16 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
-        <div className="min-h-screen flex flex-col">
-          <Header />
-          <main className="flex-1">
-            <AppRoutes />
-          </main>
-          <Footer />
-          <Chatbot />
-        </div>
+        <AuthProvider>
+          <div className="min-h-screen flex flex-col">
+            <Header />
+            <main className="flex-1">
+              <AppRoutes />
+            </main>
+            <Footer />
+            <Chatbot />
+          </div>
+        </AuthProvider>
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>
