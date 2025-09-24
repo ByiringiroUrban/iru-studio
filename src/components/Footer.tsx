@@ -58,12 +58,7 @@ const Footer = () => {
                   About Us
                 </Link>
               </li>
-              <li>
-                <Link to="/about/our-team" className="text-sm text-gray-300 hover:text-white transition-colors flex items-center">
-                  <ArrowRight className="w-3 h-3 mr-2" />
-                  Our Team
-                </Link>
-              </li>
+              
               {/* Internship link removed from footer quick links */}
               <li>
                 <Link to="/services" className="text-sm text-gray-300 hover:text-white transition-colors flex items-center">

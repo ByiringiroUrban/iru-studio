@@ -7,61 +7,85 @@ import { fadeInUp, staggerContainer, floatIn } from '@/lib/animations';
 type GalleryItem = {
   id: string;
   title: string;
-  category: 'images' | 'videography' | 'audio' | 'handcrafted-frames' | 'handicrafted-statue';
+  category: string;
   src: string;
   externalLink?: string;
 };
 
-// Import the images
-import frame1 from '@/assets/frame-1.jpg';
-import frame2 from '@/assets/frame-2.jpg';
-import frame3 from '@/assets/frame-3.jpg';
-import frame4 from '@/assets/frame-4.jpg';
-import frame5 from '@/assets/frame-5.jpg';
-import frame6 from '@/assets/frame-6.jpg';
-import statue1 from '@/assets/statue-1.jpg';
-import statue2 from '@/assets/statue-2.jpg';
-import statue3 from '@/assets/statue-3.jpg';
-import photographyService from '@/assets/photography-service.jpg';
-import videographyService from '@/assets/videography-service.jpg';
-import audioService from '@/assets/audio-service.jpg';
+// Auto-import all images from assets
+// Use absolute path so Vite resolves without alias issues, include nested files
+const allAssetModules = import.meta.glob('/src/assets/**/*.{jpg,JPG,jpeg,png}', { eager: true }) as Record<string, { default: string }>;
 
-const ITEMS: GalleryItem[] = [
-  // Handcrafted Frames
-  { id: 'frame-1', title: 'Still Life with Fruits and Lantern', category: 'handcrafted-frames', src: frame1, externalLink: 'https://irumart.com' },
-  { id: 'frame-2', title: 'Landscape with Grass and Flowers', category: 'handcrafted-frames', src: frame2, externalLink: 'https://irumart.com' },
-  { id: 'frame-3', title: 'Forest Scene with Fallen Tree', category: 'handcrafted-frames', src: frame3, externalLink: 'https://irumart.com' },
-  { id: 'frame-4', title: 'Bob Marley Musical Portrait', category: 'handcrafted-frames', src: frame4, externalLink: 'https://irumart.com' },
-  { id: 'frame-5', title: 'African Buffalo Wildlife', category: 'handcrafted-frames', src: frame5, externalLink: 'https://irumart.com' },
-  { id: 'frame-6', title: 'Gorillas in Jungle', category: 'handcrafted-frames', src: frame6, externalLink: 'https://irumart.com' },
-  
-  // Handicrafted Statues
-  { id: 'statue-1', title: 'Female Figure with Tree', category: 'handicrafted-statue', src: statue1, externalLink: 'https://irumart.com' },
-  { id: 'statue-2', title: 'Mother and Child Embrace', category: 'handicrafted-statue', src: statue2, externalLink: 'https://irumart.com' },
-  { id: 'statue-3', title: 'Woman Carrying Pot', category: 'handicrafted-statue', src: statue3, externalLink: 'https://irumart.com' },
-  
-  // Original items
-  { id: 'ph-1', title: 'Portrait Photography', category: 'images', src: photographyService },
-  { id: 'vd-1', title: 'Event Videography', category: 'videography', src: videographyService },
-  { id: 'au-1', title: 'Studio Audio Session', category: 'audio', src: audioService },
-];
+const categorize = (path: string): { category: string; title: string; externalLink?: string } => {
+  const file = path.replace(/^.*[\\\/]/, '');
+  const name = file.replace(/\.(jpg|jpeg|png|JPG)$/i, '');
+  const lower = name.toLowerCase();
 
-const CATEGORIES = [
+  // Handcrafted frames
+  if (lower.startsWith('frame-') || /^frame\s?\d+/.test(lower)) {
+    return { category: 'handcrafted-frames', title: name.replace(/-/g, ' '), externalLink: 'https://irumart.com' };
+  }
+  // Handicrafted statues
+  if (lower.startsWith('statue-') || lower.includes('statue')) {
+    return { category: 'handicrafted-statue', title: name.replace(/-/g, ' '), externalLink: 'https://irumart.com' };
+  }
+  // Videography
+  if (lower.includes('video') || lower.includes('videography') || lower.startsWith('c3') || lower.startsWith('c6')) {
+    return { category: 'videography', title: name.replace(/-/g, ' ') };
+  }
+  // Audio
+  if (lower.includes('audio')) {
+    return { category: 'audio', title: name.replace(/-/g, ' ') };
+  }
+  // Default to images
+  return { category: 'images', title: name.replace(/-/g, ' ') };
+};
+
+const RAW_ITEMS: GalleryItem[] = Object.entries(allAssetModules)
+  .map(([path, mod], idx) => {
+    const { category, title, externalLink } = categorize(path);
+    return {
+      id: `${category}-${idx}`,
+      title,
+      category,
+      src: (mod as any).default || (mod as any),
+      externalLink,
+    } as GalleryItem;
+  })
+  // Exclude logo and non-gallery assets if they slip in
+  .filter(i => !i.title.toLowerCase().includes('logo'));
+
+// Normalize categories to fixed set
+const VALID_CATEGORIES = ['images','videography','audio','handcrafted-frames','handicrafted-statue'] as const;
+const normalizeCategory = (c: string): string => {
+  const key = (c || '').toLowerCase().trim();
+  return VALID_CATEGORIES.includes(key as any) ? key : 'images';
+};
+
+const ITEMS: GalleryItem[] = RAW_ITEMS.map(i => ({ ...i, category: normalizeCategory(i.category) }));
+
+const CATEGORIES = ([
   { key: 'all', label: 'All' },
-  { key: 'images', label: 'Images' },
-  { key: 'videography', label: 'Video Graph' },
-  { key: 'audio', label: 'Audio Graph' },
-  { key: 'handcrafted-frames', label: 'Handcrafted Frames' },
-  { key: 'handicrafted-statue', label: 'Handicrafted Statue' },
-] as const;
+  ...VALID_CATEGORIES.map((k) => ({ key: k, label: k.replace(/-/g, ' ').replace(/\b\w/g, (m) => m.toUpperCase()) }))
+] as { key: string; label: string }[]);
 
 const Gallery = () => {
-  const [active, setActive] = useState<typeof CATEGORIES[number]['key']>('all');
+  const [active, setActive] = useState<string>('all');
+  const [page, setPage] = useState<number>(1);
+  const pageSize = 9;
 
   const filtered = useMemo(() => {
-    if (active === 'all') return ITEMS;
-    return ITEMS.filter((i) => i.category === active);
+    const key = (active || 'all').toLowerCase();
+    if (key === 'all') return ITEMS;
+    return ITEMS.filter((i) => i.category === key);
   }, [active]);
+
+  const totalPages = Math.max(1, Math.ceil(filtered.length / pageSize));
+  const safePage = Math.min(Math.max(1, page), totalPages);
+  const currentItems = useMemo(() => {
+    const start = (safePage - 1) * pageSize;
+    return filtered.slice(start, start + pageSize);
+  }, [filtered, safePage]);
 
   return (
     <div className="min-h-screen">
@@ -82,7 +106,7 @@ const Gallery = () => {
             <motion.button
               key={c.key}
               variants={fadeInUp}
-              onClick={() => setActive(c.key)}
+              onClick={() => { setActive(c.key); setPage(1); }}
               className={`px-4 py-2 rounded-full border text-sm ${active === c.key ? 'bg-primary text-white border-primary' : 'bg-white text-studio-navy border-gray-200 hover:bg-gray-50'}`}
             >
               {c.label}
@@ -91,7 +115,7 @@ const Gallery = () => {
         </motion.div>
 
         <motion.div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6" variants={staggerContainer(0.08)} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.15 }}>
-          {filtered.map((item) => (
+          {currentItems.map((item) => (
             <motion.div key={item.id} variants={fadeInUp} className="group bg-white rounded-2xl overflow-hidden shadow-card hover:shadow-xl transition-all duration-300">
               <div className="aspect-video bg-gray-100 overflow-hidden relative">
                 <img src={item.src} alt={item.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
@@ -128,6 +152,37 @@ const Gallery = () => {
             </motion.div>
           ))}
         </motion.div>
+
+        {/* Pagination */}
+        {totalPages > 1 && (
+          <div className="mt-10 flex items-center justify-center gap-2">
+            <Button
+              variant="outline"
+              className="text-sm"
+              onClick={() => setPage((p) => Math.max(1, p - 1))}
+              disabled={safePage === 1}
+            >
+              Previous
+            </Button>
+            {Array.from({ length: totalPages }).map((_, i) => (
+              <button
+                key={i}
+                onClick={() => setPage(i + 1)}
+                className={`w-9 h-9 rounded-full border ${safePage === i + 1 ? 'bg-primary text-white border-primary' : 'bg-white text-studio-navy border-gray-200 hover:bg-gray-50'}`}
+              >
+                {i + 1}
+              </button>
+            ))}
+            <Button
+              variant="outline"
+              className="text-sm"
+              onClick={() => setPage((p) => Math.min(totalPages, p + 1))}
+              disabled={safePage === totalPages}
+            >
+              Next
+            </Button>
+          </div>
+        )}
       </div>
     </div>
   );

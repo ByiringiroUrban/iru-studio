@@ -91,7 +91,6 @@ const Header = () => {
                 <div className="absolute top-full left-0 mt-1 w-44 bg-white shadow-xl rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 border border-gray-100" role="menu" aria-label="About submenu">
                   <Link to="/about/who-we-are" className="block px-3 py-2 text-xs text-studio-navy hover:bg-gray-50">Who We Are</Link>
                   <Link to="/about/why-choose-us" className="block px-3 py-2 text-xs text-studio-navy hover:bg-gray-50">Why Choose Us</Link>
-                  <Link to="/about/our-team" className="block px-3 py-2 text-xs text-studio-navy hover:bg-gray-50">Our Team</Link>
                 </div>
               </div>
               {/* Services Dropdown */}

@@ -400,7 +400,7 @@ const Pricing = () => {
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold text-studio-navy mb-4">Packages & Services</h2>
             <p className="text-lg text-gray-600">Extra services and add-ons available on demand.</p>
-          </div>
+                </div>
 
           <div className="grid md:grid-cols-2 gap-8">
             <div className="bg-gray-50 rounded-xl p-6 border border-gray-200">
@@ -411,7 +411,7 @@ const Pricing = () => {
                 <li className="flex justify-between"><span>Maintenance</span><span className="font-semibold">250k / month</span></li>
                 <li className="flex justify-between"><span>Simple info website, hosting and Domain</span><span className="font-semibold">600k</span></li>
               </ul>
-            </div>
+                </div>
 
             <div className="bg-gray-50 rounded-xl p-6 border border-gray-200">
               <h3 className="text-xl font-bold text-studio-navy mb-4">Content & Branding</h3>
@@ -422,7 +422,7 @@ const Pricing = () => {
                 <li className="flex justify-between"><span>T-shirt, Bags, Hat</span><span className="font-semibold">20k / each</span></li>
                 <li className="flex justify-between"><span>T-shirt design & Printing</span><span className="font-semibold">10k / pc</span></li>
               </ul>
-            </div>
+                </div>
 
             <div className="bg-gray-50 rounded-xl p-6 border border-gray-200">
               <h3 className="text-xl font-bold text-studio-navy mb-4">Wedding Options</h3>
@@ -435,7 +435,7 @@ const Pricing = () => {
                 <li className="flex justify-between"><span>Drone photography</span><span className="font-semibold">2M / day</span></li>
               </ul>
             </div>
-
+            
             <div className="bg-gray-50 rounded-xl p-6 border border-gray-200">
               <h3 className="text-xl font-bold text-studio-navy mb-4">Ceremonies & Memorial</h3>
               <ul className="space-y-2 text-gray-700">

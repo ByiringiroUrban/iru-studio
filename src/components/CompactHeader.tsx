@@ -72,12 +72,7 @@ const CompactHeader: React.FC<CompactHeaderProps> = ({ isVisible }) => {
                               >
                                 Why Choose Us
                               </Link>
-                              <Link
-                                to="/about/our-team"
-                                className="block px-3 py-2 text-xs text-studio-navy hover:bg-gray-50"
-                              >
-                                Our Team
-                              </Link>
+                              
                               <Link
                                 to="/internships"
                                 className="block px-3 py-2 text-xs text-studio-navy hover:bg-gray-50"
@@ -158,9 +153,7 @@ const CompactHeader: React.FC<CompactHeaderProps> = ({ isVisible }) => {
                     <Link to="/about/why-choose-us" className="block text-xs text-studio-navy hover:text-primary">
                       Why Choose Us
                     </Link>
-                    <Link to="/about/our-team" className="block text-xs text-studio-navy hover:text-primary">
-                      Our Team
-                    </Link>
+                    
                     <Link to="/internships" className="block text-xs text-studio-navy hover:text-primary">
                       Internships
                     </Link>
