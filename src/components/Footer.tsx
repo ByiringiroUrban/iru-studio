@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { Facebook, Linkedin, Calendar, ArrowRight, Instagram, Pin, Play } from 'lucide-react';
+import { Facebook, Linkedin, Calendar, ArrowRight, Instagram, Pin, Music } from 'lucide-react';
 import frameTuneLogo from '/assets/logo.jpg';
 
 const Footer = () => {
@@ -43,7 +43,7 @@ const Footer = () => {
                 <Pin className="w-4 h-4 text-white" />
               </a>
               <a href="https://www.tiktok.com/@frameandtunestudio1?lang=en" target="_blank" rel="noreferrer" aria-label="TikTok" className="w-8 h-8 border border-white/30 rounded flex items-center justify-center hover:bg-white/10 cursor-pointer transition-colors">
-                <Play className="w-4 h-4 text-white" />
+                <Music className="w-4 h-4 text-white" />
               </a>
             </div>
           </div>

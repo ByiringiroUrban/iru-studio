@@ -899,7 +899,7 @@ const Home = () => {
                 <Phone className="w-8 h-8 text-white" />
               </div>
               <div>
-                <div className="text-2xl font-bold">+250 788 894 032</div>
+                <div className="text-2xl font-bold">Call: 0795 381 733 / 0736 318 111</div>
                 <div className="text-xl opacity-90">Don't hesitate to reach out to us</div>
               </div>
             </div>

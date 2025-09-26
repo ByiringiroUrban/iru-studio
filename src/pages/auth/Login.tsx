@@ -38,7 +38,10 @@ const Login: React.FC = () => {
         <input className="w-full border rounded px-3 py-2" placeholder="Email" type="email" value={email} onChange={e=>setEmail(e.target.value)} />
         <input className="w-full border rounded px-3 py-2" placeholder="Password" type="password" value={password} onChange={e=>setPassword(e.target.value)} />
         <Button type="submit" className="w-full" disabled={loading}>{loading ? 'Signing in...' : 'Login'}</Button>
-        <div className="text-sm text-gray-600">Forgot your password? <a href="/forgot" className="text-primary">Reset it</a></div>
+        <div className="flex justify-between text-sm text-gray-600">
+          <span>Forgot your password? <a href="/forgot" className="text-primary">Reset it</a></span>
+          <span>Don't have an account? <a href="/register" className="text-primary">Sign up</a></span>
+        </div>
       </form>
     </div>
   );

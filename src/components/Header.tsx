@@ -11,9 +11,9 @@ import {
   Linkedin,
   Pin,
   Instagram,
-  MessageCircle,
+  MessageSquare,
   ShoppingCart,
-  Play,
+  Music,
 } from "lucide-react";
 import CompactHeader from "./CompactHeader";
 import frameTuneLogo from "/assets/logo.jpg";
@@ -61,10 +61,10 @@ const Header = () => {
                 <Pin className="w-3 h-3 text-white" />
               </a>
               <a href="https://www.tiktok.com/@frameandtunestudio1?lang=en" target="_blank" rel="noreferrer" aria-label="TikTok" className="w-6 h-6 bg-primary rounded flex items-center justify-center hover:bg-primary/80 cursor-pointer">
-                <Play className="w-3 h-3 text-white" />
+                <Music className="w-3 h-3 text-white" />
               </a>
               <a href="https://wa.me/250795381733" target="_blank" rel="noreferrer" aria-label="WhatsApp" className="w-6 h-6 bg-primary rounded flex items-center justify-center hover:bg-primary/80 cursor-pointer">
-                <MessageCircle className="w-3 h-3 text-white" />
+                <MessageSquare className="w-3 h-3 text-white" />
               </a>
          
               <Button asChild className="ml-2 bg-primary hover:bg-primary/90 text-primary-foreground px-3 py-1 text-xs">

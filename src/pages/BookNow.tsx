@@ -308,7 +308,7 @@ const BookNow = () => {
               <div className="space-y-2 text-sm">
                 <div className="flex items-center">
                   <Phone className="w-4 h-4 mr-2" />
-                  <span>+250 795 381 733</span>
+                  <span>Call: 0795 381 733 / 0736 318 111</span>
                 </div>
                 <div className="flex items-center">
                   <Mail className="w-4 h-4 mr-2" />

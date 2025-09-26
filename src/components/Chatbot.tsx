@@ -35,9 +35,9 @@ const Chatbot = () => {
 
   const botResponses: { [key: string]: string } = {
     "pricing": "Our photography packages start from 500,000 FRW for basic sessions. We also offer videography, audio production, and frame services. Would you like to see our detailed pricing?",
-    "book": "Great! To book a session, you can call us at +250 788 123 456 or email info@frameandtune.com. We're available Monday-Friday 9AM-6PM.",
+    "book": "Great! To book a session, you can call us at 0795 381 733 / 0736 318 111 or email info@frameandtune.com. We're available Monday-Friday 9AM-6PM.",
     "services": "We offer professional photography, cinematic videography, expert audio production, and custom frame services. Each service includes editing and post-production.",
-    "contact": "You can reach us at:\n📞 +250 788 123 456\n📧 info@frameandtune.com\n📍 Kigali, Rwanda\n🕒 Mon-Fri: 9AM-6PM",
+    "contact": "You can reach us at:\n📞 Call: 0795 381 733 / 0736 318 111\n📱 WhatsApp: 0795 381 733\n📧 info@frameandtune.com\n📍 Kigali, Rwanda\n🕒 Mon-Fri: 9AM-6PM",
     "portfolio": "Check out our latest work in our Gallery section! We showcase photography, videography, and audio projects. Would you like to see specific examples?",
     "default": "I'd be happy to help! You can ask me about our services, pricing, booking, or contact information. What would you like to know?"
   };
@@ -233,7 +233,7 @@ const Chatbot = () => {
                 <div className="flex items-center justify-center space-x-4">
                   <div className="flex items-center space-x-1">
                     <Phone className="w-3 h-3" />
-                    <span>+250 788 123 456</span>
+                    <span>0795 381 733 / 0736 318 111</span>
                   </div>
                   <div className="flex items-center space-x-1">
                     <Mail className="w-3 h-3" />
@@ -250,6 +250,8 @@ const Chatbot = () => {
 };
 
 export default Chatbot;
+
+
 
 
 

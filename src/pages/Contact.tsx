@@ -104,9 +104,8 @@ const Contact = () => {
                 <Phone className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
                 <div>
                   <h3 className="font-semibold text-studio-navy mb-1">Phone</h3>
-                  <p className="text-gray-600">+250 795 381 733</p>
-                  <p className="text-gray-600">+250 736 318 111</p>
-                  <p className="text-gray-600">+250 788 894 032</p>
+                  <p className="text-gray-600">Call: 0795 381 733 / 0736 318 111</p>
+                  <p className="text-gray-600">WhatsApp: 0795 381 733</p>
                 </div>
               </div>
 
