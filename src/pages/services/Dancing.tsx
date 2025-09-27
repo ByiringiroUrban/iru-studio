@@ -410,7 +410,7 @@ const Dancing = () => {
                   {/* Umushayayo */}
                   <div className="bg-white rounded-2xl p-6 shadow-lg">
                     <div className="flex items-center justify-between mb-4">
-                      <h4 className="text-xl font-bold text-studio-navy">Umushayayo</h4>
+                      <h4 className="text-xl font-bold text-studio-navy">Ikinimba</h4>
                       <span className="bg-red-100 text-red-600 px-3 py-1 rounded-full text-sm font-semibold">Traditional</span>
                     </div>
                     <p className="text-gray-600 mb-4">Elegant dance celebrating Rwandan culture with graceful movements and traditional music.</p>
@@ -447,7 +447,7 @@ const Dancing = () => {
                   {/* Ikinyemera */}
                   <div className="bg-white rounded-2xl p-6 shadow-lg">
                     <div className="flex items-center justify-between mb-4">
-                      <h4 className="text-xl font-bold text-studio-navy">Ikinyemera</h4>
+                      <h4 className="text-xl font-bold text-studio-navy">Kwiyereka Ingabo</h4>
                       <span className="bg-red-100 text-red-600 px-3 py-1 rounded-full text-sm font-semibold">Traditional</span>
                     </div>
                     <p className="text-gray-600 mb-4">Joyful celebration dance with rhythmic footwork and community spirit.</p>

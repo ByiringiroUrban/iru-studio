@@ -84,11 +84,71 @@ export const pricingData: ServiceData[] = [
       {
         id: 'website-design',
         title: 'Website Design',
-        description: 'Personal, portfolio, business, and e‑commerce',
+        description: 'Personal, portfolio, business, e-commerce, blog, educational platforms, and custom web applications',
         tiers: [
-          { tier: 'basic', label: 'Basic', price: 'RWF 900,000', features: ['Up to 5 pages', 'SEO basics', 'Domain & hosting setup'] },
-          { tier: 'standard', label: 'Standard', price: 'RWF 2,500,000', features: ['Up to 10 pages', 'Blog + analytics', 'Admin training'] },
-          { tier: 'premium', label: 'Premium', price: 'RWF 6,000,000', features: ['Unlimited pages', 'E‑commerce ready', 'Maintenance plan'] }
+          { tier: 'basic', label: 'Basic', price: 'RWF 500,000', features: ['Up to 5 pages', 'Simple design with limited customization', 'Mobile-friendly layout', 'Basic SEO optimization', 'Hosting and domain setup guidance'] },
+          { tier: 'standard', label: 'Standard', price: 'RWF 700,000', features: ['Up to 10 pages', 'Custom design with advanced layouts', 'Mobile and tablet optimization', 'Basic e-commerce or blog functionality', 'Standard SEO and analytics integration'] },
+          { tier: 'premium', label: 'Premium', price: 'RWF 1,000,000', features: ['Unlimited pages and advanced features', 'Fully customized, high-end design', 'Complex functionalities (e.g., e-commerce, booking systems)', 'Advanced SEO, analytics, and performance optimization', 'Ongoing support and maintenance for a specified period'] }
+        ]
+      },
+      {
+        id: 'portfolio-website',
+        title: 'Portfolio Website',
+        description: 'Professional portfolio websites for creatives and professionals',
+        tiers: [
+          { tier: 'basic', label: 'Basic', price: 'RWF 700,000', features: ['Up to 5 pages', 'Simple design with limited customization', 'Mobile-friendly layout', 'Basic SEO optimization', 'Hosting and domain setup guidance'] },
+          { tier: 'standard', label: 'Standard', price: 'RWF 900,000', features: ['Up to 10 pages', 'Custom design with advanced layouts', 'Mobile and tablet optimization', 'Basic e-commerce or blog functionality', 'Standard SEO and analytics integration'] },
+          { tier: 'premium', label: 'Premium', price: 'RWF 2,500,000', features: ['Unlimited pages and advanced features', 'Fully customized, high-end design', 'Complex functionalities (e.g., e-commerce, booking systems)', 'Advanced SEO, analytics, and performance optimization', 'Ongoing support and maintenance for a specified period'] }
+        ]
+      },
+      {
+        id: 'business-website',
+        title: 'Business Website',
+        description: 'Professional business websites with advanced features',
+        tiers: [
+          { tier: 'basic', label: 'Basic', price: 'RWF 1,000,000', features: ['Up to 5 pages', 'Simple design with limited customization', 'Mobile-friendly layout', 'Basic SEO optimization', 'Hosting and domain setup guidance'] },
+          { tier: 'standard', label: 'Standard', price: 'RWF 3,000,000', features: ['Up to 10 pages', 'Custom design with advanced layouts', 'Mobile and tablet optimization', 'Basic e-commerce or blog functionality', 'Standard SEO and analytics integration'] },
+          { tier: 'premium', label: 'Premium', price: 'RWF 5,000,000', features: ['Unlimited pages and advanced features', 'Fully customized, high-end design', 'Complex functionalities (e.g., e-commerce, booking systems)', 'Advanced SEO, analytics, and performance optimization', 'Ongoing support and maintenance for 5 months'] }
+        ]
+      },
+      {
+        id: 'ecommerce-website',
+        title: 'E-commerce Website',
+        description: 'Full-featured online stores with payment processing',
+        tiers: [
+          { tier: 'basic', label: 'Basic', price: 'RWF 1,200,000', features: ['Up to 5 pages', 'Simple design with limited customization', 'Mobile-friendly layout', 'Basic SEO optimization', 'Hosting and domain setup guidance'] },
+          { tier: 'standard', label: 'Standard', price: 'RWF 3,500,000', features: ['Up to 10 pages', 'Custom design with advanced layouts', 'Mobile and tablet optimization', 'Basic e-commerce or blog functionality', 'Standard SEO and analytics integration'] },
+          { tier: 'premium', label: 'Premium', price: 'RWF 7,500,000+', features: ['Unlimited pages and advanced features', 'Fully customized, high-end design', 'Complex functionalities (e.g., e-commerce, booking systems)', 'Advanced SEO, analytics, and performance optimization', 'Ongoing support and maintenance for a specified period'] }
+        ]
+      },
+      {
+        id: 'blog-content-website',
+        title: 'Blog/Content Website',
+        description: 'Content management systems for blogs and content websites',
+        tiers: [
+          { tier: 'basic', label: 'Basic', price: 'RWF 1,200,000', features: ['Up to 5 pages', 'Simple design with limited customization', 'Mobile-friendly layout', 'Basic SEO optimization', 'Hosting and domain setup guidance'] },
+          { tier: 'standard', label: 'Standard', price: 'RWF 3,500,000', features: ['Up to 10 pages', 'Custom design with advanced layouts', 'Mobile and tablet optimization', 'Basic e-commerce or blog functionality', 'Standard SEO and analytics integration'] },
+          { tier: 'premium', label: 'Premium', price: 'RWF 7,500,000+', features: ['Unlimited pages and advanced features', 'Fully customized, high-end design', 'Complex functionalities (e.g., e-commerce, booking systems)', 'Advanced SEO, analytics, and performance optimization', 'Ongoing support and maintenance for a specified period'] }
+        ]
+      },
+      {
+        id: 'educational-platform',
+        title: 'Educational Platform',
+        description: 'Learning management systems and educational websites',
+        tiers: [
+          { tier: 'basic', label: 'Basic', price: 'RWF 500,000', features: ['Up to 5 pages', 'Simple design with limited customization', 'Mobile-friendly layout', 'Basic SEO optimization', 'Hosting and domain setup guidance'] },
+          { tier: 'standard', label: 'Standard', price: 'RWF 800,000', features: ['Up to 10 pages', 'Custom design with advanced layouts', 'Mobile and tablet optimization', 'Basic e-commerce or blog functionality', 'Standard SEO and analytics integration'] },
+          { tier: 'premium', label: 'Premium', price: 'RWF 1,500,000', features: ['Unlimited pages and advanced features', 'Fully customized, high-end design', 'Complex functionalities (e.g., e-commerce, booking systems)', 'Advanced SEO, analytics, and performance optimization', 'Ongoing support and maintenance for a specified period'] }
+        ]
+      },
+      {
+        id: 'custom-web-applications',
+        title: 'Custom Web Applications',
+        description: 'Bespoke web applications and complex systems',
+        tiers: [
+          { tier: 'basic', label: 'Basic', price: 'RWF 4,000,000', features: ['Up to 5 pages', 'Simple design with limited customization', 'Mobile-friendly layout', 'Basic SEO optimization', 'Hosting and domain setup guidance'] },
+          { tier: 'standard', label: 'Standard', price: 'RWF 6,500,000', features: ['Up to 10 pages', 'Custom design with advanced layouts', 'Mobile and tablet optimization', 'Basic e-commerce or blog functionality', 'Standard SEO and analytics integration'] },
+          { tier: 'premium', label: 'Premium', price: 'RWF 9,000,000+', features: ['Unlimited pages and advanced features', 'Fully customized, high-end design', 'Complex functionalities (e.g., e-commerce, booking systems)', 'Advanced SEO, analytics, and performance optimization', 'Ongoing support and maintenance for a specified period'] }
         ]
       }
     ]

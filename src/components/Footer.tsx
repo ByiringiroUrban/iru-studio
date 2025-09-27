@@ -2,7 +2,10 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { Facebook, Linkedin, Calendar, ArrowRight, Instagram, Pin, Music } from 'lucide-react';
+import { Facebook, Linkedin, Calendar, ArrowRight, Instagram } from 'lucide-react';
+import { FaWhatsapp } from 'react-icons/fa';
+import { FaPinterest } from 'react-icons/fa6';
+import { AiFillTikTok } from 'react-icons/ai';
 import frameTuneLogo from '/assets/logo.jpg';
 
 const Footer = () => {
@@ -40,10 +43,10 @@ const Footer = () => {
                 <Linkedin className="w-4 h-4 text-white" />
               </a>
               <a href="https://www.pinterest.com/frameandtunestudio/" target="_blank" rel="noreferrer" aria-label="Pinterest" className="w-8 h-8 border border-white/30 rounded flex items-center justify-center hover:bg-white/10 cursor-pointer transition-colors">
-                <Pin className="w-4 h-4 text-white" />
+                <FaPinterest className="w-4 h-4 text-white" />
               </a>
               <a href="https://www.tiktok.com/@frameandtunestudio1?lang=en" target="_blank" rel="noreferrer" aria-label="TikTok" className="w-8 h-8 border border-white/30 rounded flex items-center justify-center hover:bg-white/10 cursor-pointer transition-colors">
-                <Music className="w-4 h-4 text-white" />
+                <AiFillTikTok className="w-4 h-4 text-white" />
               </a>
             </div>
           </div>

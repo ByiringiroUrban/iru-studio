@@ -9,12 +9,13 @@ import {
   Clock,
   Facebook,
   Linkedin,
-  Pin,
   Instagram,
   MessageSquare,
   ShoppingCart,
-  Music,
 } from "lucide-react";
+import { FaWhatsapp } from "react-icons/fa";
+import { FaPinterest } from "react-icons/fa6";
+import { AiFillTikTok } from "react-icons/ai";
 import CompactHeader from "./CompactHeader";
 import frameTuneLogo from "/assets/logo.jpg";
 import { useAuth } from "@/context/AuthContext";
@@ -58,13 +59,13 @@ const Header = () => {
                 <Linkedin className="w-3 h-3 text-white" />
               </a>
               <a href="https://www.pinterest.com/frameandtunestudio/" target="_blank" rel="noreferrer" aria-label="Pinterest" className="w-6 h-6 bg-primary rounded flex items-center justify-center hover:bg-primary/80 cursor-pointer">
-                <Pin className="w-3 h-3 text-white" />
+                <FaPinterest className="w-3 h-3 text-white" />
               </a>
               <a href="https://www.tiktok.com/@frameandtunestudio1?lang=en" target="_blank" rel="noreferrer" aria-label="TikTok" className="w-6 h-6 bg-primary rounded flex items-center justify-center hover:bg-primary/80 cursor-pointer">
-                <Music className="w-3 h-3 text-white" />
+                <AiFillTikTok className="w-3 h-3 text-white" />
               </a>
               <a href="https://wa.me/250795381733" target="_blank" rel="noreferrer" aria-label="WhatsApp" className="w-6 h-6 bg-primary rounded flex items-center justify-center hover:bg-primary/80 cursor-pointer">
-                <MessageSquare className="w-3 h-3 text-white" />
+                <FaWhatsapp className="w-3 h-3 text-white" />
               </a>
          
               <Button asChild className="ml-2 bg-primary hover:bg-primary/90 text-primary-foreground px-3 py-1 text-xs">
